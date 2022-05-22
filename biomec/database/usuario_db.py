@@ -1,4 +1,4 @@
-from ..models.entidades.User import User
+from ..models.entidades import User
 from .connection import _fetch_all,_fecth_lastrow_id,_fetch_none,_fetch_one  #las funciones 
 # usuario de tipo USER que apunta a User
 def create(usuario: User) -> User:
@@ -25,17 +25,17 @@ def list_all(usuario: User) -> User:
 
 #-----------------------  LOGIN --------------------------------
 def login(usuario: User) -> User:
-    if user_existe("Nombre",usuario.username):
+    if user_existe("Nombre",usuario):
         #falta implementar el usuario no encontrado, ponerle mensaje
         print('Existe el nombre de usuario en la Base de datos')
     else:
         print("NO existe el nombre de usuario en la Base de datos")
 
     sql = """ SELECT * from Usuario 
-                    where Nombre = '{}' """.format(usuario.username) #la variable del modelo User
+                    where Nombre = '{}' """.format(usuario) #la variable del modelo User
     
     #parametros = usuario.username
-    parametros =[]
+    parametros = None
 
     row = _fetch_one(sql,parametros)
     if row !=None:
@@ -51,5 +51,7 @@ def user_existe(field: str, value: str) -> bool:
     sql = """ SELECT  * from Usuario 
                     where '{}'  = '{}' """.format(field,value)
 
-    boleano = _fetch_one(sql)
+    parametros = None
+
+    boleano = _fetch_one(sql,parametros)
     return bool(boleano)

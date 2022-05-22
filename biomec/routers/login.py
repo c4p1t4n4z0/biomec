@@ -1,8 +1,4 @@
 from flask import Blueprint, flash, redirect, render_template, request, url_for
-#Models
-#from models.ModelUser import ModelUser
-#Entidades
-#from models.entidades.User import User
 
 #Controllers
 from ..controller import UserController
@@ -23,11 +19,15 @@ def login():
         print(data)        
         print(data['username'])
         print(data['password'])
-        #print(UserController.login(user))
-        logged_user =  UserController.existe('Nombre',data['username']) #usuario logeado
+        usuario = User.User(5,data['username'],data['password'],1,16)   #capturo los datos del formulario
+        print('------variable usuario-------')
+        print(usuario)
+        logged_user =  UserController.login(usuario)                    # Controlador de Usuario
+        print('----------------------')
         print(logged_user)
+        print('----------------------')
         if logged_user != None: # existen valores 
-            if logged_user.password:  #el password conincide ? TRUE o FALSE
+            if logged_user.User().password:  #el password conincide ? TRUE o FALSE
                 return redirect(url_for('views.home')) #Si la cotraselea es corecta se dirigue a una Dashborad
             else:
                 flash("Contraseña invalida") # Contraseña invalida

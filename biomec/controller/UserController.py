@@ -1,4 +1,4 @@
-from ..models.entidades.User import User
+from ..models.entidades import User
 from ..database import usuario_db
 
 # usuario de tipo USER que tendra como resultado de tipo User
