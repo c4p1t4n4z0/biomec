@@ -1,9 +1,11 @@
 from werkzeug.security import check_password_hash   #generate_password_hash   # para encryptar el password
+from flask_login import UserMixin                   #debe ser importante 
 
-class User():
-    
+class User(UserMixin):
+#class User():
     #-----metodo constructor, reflejo de la tabla usuario de la base de datos BD_Lab-----
-    def __init__(self, ID, Nombre, Contraseña, ID_Rol_,ID_persona):
+    #def __init__(self, ID, Nombre, Contraseña, ID_Rol_,ID_persona):
+    def __init__(self,ID, Nombre, Contraseña, ID_Rol_,ID_persona) -> None:        
         self.id = ID
         self.username = Nombre
         self.password = Contraseña
@@ -23,3 +25,4 @@ class User():
 # Este es el hash creado para la prueba el usuario admin,debes de insertarlo en la DB_Lab
 #pbkdf2:sha256:260000$UJdTDI1U1yespnS4$5ec3974d5906c6e3e28a87da7e44e191eeecba9a794ff4bf368072eac040d11e
 #
+

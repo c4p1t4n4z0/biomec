@@ -1,4 +1,4 @@
-from ..models.entidades import User
+from ..models.entidades.User import User 
 from ..database import usuario_db
 
 # usuario de tipo USER que tendra como resultado de tipo User
@@ -16,8 +16,7 @@ def delete(usuario: User) -> User:
 
 #Devuelve lista completa 
 def list():
-    return usuario_db.list()        
-
+    return usuario_db.list_all()        
 
 def login(usuario: User) -> User:
     return usuario_db.login(usuario)
