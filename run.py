@@ -2,4 +2,4 @@
 from biomec import biomec
 
 if __name__ == "__main__":
-    biomec.run()  # No añadir parametros, modificar directamente en el archivo config.py
+    biomec.run()            # No añadir parametros, modificar directamente en el archivo config.py
