@@ -36,9 +36,9 @@ def login():
         
 
 
-@login_scope.route('/signup')
-def signup():
-    return 'Signup'
+@login_scope.route('/registro')
+def registro_user():
+    return render_template('auth/registro.html')
 
 
 @login_scope.route('/logout')
