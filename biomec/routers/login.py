@@ -10,40 +10,29 @@ from ..models.entidades.User import User
 login_scope = Blueprint('admin',__name__)
 
 
-
 @login_scope.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
-        #print(request.form['username'])
-        #print(request.form['password'])
-        data = request.form
+        data = request.form  # guardo todos los datos ingresados por formulario de la vista
         print(data)        
         print(data['username'])
         print(data['password'])
-        #usuario = User(0,data['username'],data['password'],0,0)   #capturo los datos del formulario
-        print('------variable usuario-------')
-        #print(usuario.username)
-        #print(UserController.existe('Nombre',request.form['username']))
-        #print(UserController.list())
-        print(UserController.existe('Usuario',data['username']))
-        #logged_user =  UserController.login(usuario)                    # Controlador de Usuario
-        print('----------------------')
-        #print(logged_user)
-        print('----------------------')
-        '''
-        if logged_user != None: # existen valores 
-            if logged_user.User().password:  #el password conincide ? TRUE o FALSE
-                return redirect(url_for('views.home')) #Si la cotraselea es corecta se dirigue a una Dashborad
+        #existe_el_usuario = UserController.existe('Nombre',data['username']) 
+        print('------datos ingresados por formulario-------')
+        usuario = User(0,data['username'],data['password'],0,0)  #capturo los datos del formulario
+        logged_user = UserController.login(usuario)
+        if logged_user != None:         # Controlador de Usuario, si tienen datos
+            if logged_user.password:    #si la contraseña coincide con el de la base de datos
+                return redirect(url_for('views.home')) # se dirigue a una "Dashborad", falta crearla
             else:
-                flash("Contraseña invalida") # Contraseña invalida
+                flash("Contraseña invalida")           # Contraseña invalida
                 return render_template('auth/login.html')
         else:
-            flash("Usuario no Encontrado") # Usuario no encontrado
+            flash("Usuario no Encontrado")             # Usuario no encontrado
             return render_template('auth/login.html')
-        '''
     else:
         return render_template('auth/login.html')
-    #return 'login'
+        
 
 
 @login_scope.route('/signup')

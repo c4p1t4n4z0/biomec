@@ -1,4 +1,3 @@
-from flask_login import UserMixin
 from ..models.entidades.User import User 
 from .connection import _fetch_all,_fecth_lastrow_id,_fetch_none,_fetch_one  #las funciones 
 # usuario de tipo USER que apunta a User
@@ -18,11 +17,11 @@ def update(usuario: User) -> User:
 def delete(usuario: User) -> User:
     pass
 
-def list_all():
+def list_all(): #LISTO FUNCIONA
     sql = "SELECT * FROM Usuario"
     print(sql) 
     usuario_lista_sql = _fetch_all(sql,None)
-
+    print(usuario_lista_sql)
     usuario_lista = [] #Tupla que devolvera todos los datos de la tabla Usuario
 
     for atributo in usuario_lista_sql:
@@ -38,25 +37,19 @@ def list_all():
 
 #-----------------------  LOGIN --------------------------------
 def login(usuario: User) -> User:
-
-    sql = """ SELECT * from Usuario 
-                    where Nombre = '{}' """.format(usuario.username) #la variable del modelo User
-    
-    #parametros = usuario.username
-    parametros = None
-
-    row = _fetch_one(sql,parametros)
+    sql = " SELECT ID, Nombre, Contraseña, ID_Rol_,ID_persona FROM Usuario WHERE Nombre = '{}' ".format(usuario.username) #la variable del modelo User
+    row = _fetch_one(sql,None)
     if row !=None:
-        usuario = User(row[0],row[1], User.check_password(row[2],usuario.password), row[3],row[4])
+        usuario = User(row[0],row[1], (User.check_password(row[2],(usuario.password))), row[3],row[4])
         return usuario  # El usuario se encuentra en la BD_Lab
     else:
         return None # no hay usuario
 
-#Existe el usuario, retorna booleano      ejemplo  if user_exists("nombre", user.nombre):
+#Existe el usuario, retorna booleano      ejemplo  if user_exists("Nombre", user.nombre):
 # field: los campos                   def user_existe(field: str, value: str) -> bool:
 # value: atributo a buscar             
-def user_existe(field: str, value: str) -> bool:
-    sql = "SELECT  * from Usuario where {}  = {} ".format(field,value)
+def user_existe(atributo: str, value: str) -> bool:
+    sql = "SELECT  * FROM Usuario WHERE {}  = '{}' ".format(atributo,value)
     print(sql)
     boleano = _fetch_one(sql,None)
     return bool(boleano)
