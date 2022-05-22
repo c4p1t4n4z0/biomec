@@ -39,10 +39,10 @@ create table Usuario
 (
 ID integer not null,
 Nombre varchar(30) not null,
-Contraseña varchar(15) not null,
-ID_Rol_ integer not null, 	 -- que acepte valores nulos
+Contraseña varchar(150) not null,
+ID_Rol_ integer not null, 	 
 primary key (ID),
-ID_persona integer not null, -- que acepte valores nulos
+ID_persona integer not null, 
 foreign key (ID_persona) references Persona(CI)
 on update cascade
 on delete cascade,

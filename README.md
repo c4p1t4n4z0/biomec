@@ -29,3 +29,4 @@ Descargar el proyecto, ingresa a la ruta del proyecto desde el cmd, (esto solo s
 
 - **Referencia 1:**
 	+ [Estructura de proyecto MVC](https://www.youtube.com/watch?v=TTYdcZ4aYz8)
+	+ [login Flask				 ](https://youtu.be/FX0lMm_Qj10)
