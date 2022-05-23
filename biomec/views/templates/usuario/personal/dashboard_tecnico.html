@@ -1,0 +1,13 @@
+{% extends '/base/base.html' %}
+
+
+
+{% block body %}
+<div class="container">
+    <h1>{{title}}</h1>
+    <p>{{description}}</p>
+</div>
+
+<a class="btn btn-secondary" href=>Generar reporte</a>
+<a class="btn btn-secondary" href="{{ url_for('tipo.logout') }}">Salir</a>
+{% endblock %}

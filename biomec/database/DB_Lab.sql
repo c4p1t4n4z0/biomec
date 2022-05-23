@@ -269,14 +269,24 @@ insert into Privilegio_Rol values(4,1)
 insert into Privilegio_Rol values(5,1)
 insert into Privilegio_Rol values(3,2)
 insert into Privilegio_Rol values(5,2)
+insert into Privilegio_Rol values(5,3)
 
 
-
+-- usuarios administradores
 insert into Usuario values(1,'cristian','pbkdf2:sha256:260000$UJdTDI1U1yespnS4$5ec3974d5906c6e3e28a87da7e44e191eeecba9a794ff4bf368072eac040d11e',1,12)
 insert into Usuario values(2,'luis','pbkdf2:sha256:260000$UJdTDI1U1yespnS4$5ec3974d5906c6e3e28a87da7e44e191eeecba9a794ff4bf368072eac040d11e',1,13)
 insert into Usuario values(3,'bebi','pbkdf2:sha256:260000$UJdTDI1U1yespnS4$5ec3974d5906c6e3e28a87da7e44e191eeecba9a794ff4bf368072eac040d11e',1,14)
 insert into Usuario values(4,'nelson','pbkdf2:sha256:260000$UJdTDI1U1yespnS4$5ec3974d5906c6e3e28a87da7e44e191eeecba9a794ff4bf368072eac040d11e',1,15)
 insert into Usuario values(5,'franz','pbkdf2:sha256:260000$UJdTDI1U1yespnS4$5ec3974d5906c6e3e28a87da7e44e191eeecba9a794ff4bf368072eac040d11e',1,16)
+
+-- usuarios de personal ( recepcionista)
+insert into Usuario values(6,'sandra','pbkdf2:sha256:260000$UJdTDI1U1yespnS4$5ec3974d5906c6e3e28a87da7e44e191eeecba9a794ff4bf368072eac040d11e',2,1)
+
+
+-- usuarios de Tecnico o el doctor ( Laboratorista)
+insert into Usuario values(7,'fatima','pbkdf2:sha256:260000$UJdTDI1U1yespnS4$5ec3974d5906c6e3e28a87da7e44e191eeecba9a794ff4bf368072eac040d11e',3,5)
+
+
 
 
 

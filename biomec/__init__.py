@@ -8,7 +8,7 @@ from flask_wtf.csrf import CSRFProtect # para la proteccion del login, important
 
 
 # importamos las rutas con sus variablas de entorno
-from .routers import global_scope,login_scope  #aqui se importa los archivos de la carpeta  =>  routers
+from .routers import global_scope, tipo_scope  #aqui se importa los archivos de la carpeta  =>  routers
 
 csrf = CSRFProtect()                           # creamos una instancia para la proteccion para login   => csrf
 
@@ -26,7 +26,7 @@ csrf.init_app(biomec)
 #####################################################################################
 
 biomec.register_blueprint(global_scope, url_prefix="/")
-biomec.register_blueprint(login_scope,url_prefix ="/admin")
+biomec.register_blueprint(tipo_scope,url_prefix ="/tipo")
 
 
     
