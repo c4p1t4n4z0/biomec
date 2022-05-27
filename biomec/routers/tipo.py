@@ -1,5 +1,5 @@
 from flask import Blueprint, flash, redirect, render_template, request, session, url_for
-from flask_login import login_required
+
 
 # importamos los controladores de Usuario
 from ..controller import UserController,PersonaController

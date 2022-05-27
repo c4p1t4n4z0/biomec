@@ -5,7 +5,7 @@ from ..database import persona_db
 def create(persona: Persona) -> Persona:
     # falta implementar los metodos de validacion asi que hay que ingresar datos correctos sino genera error
     return persona_db.create(persona)
-
+    
 
 def update(persona: Persona) -> Persona:
     return persona_db.update(persona)
