@@ -7,7 +7,7 @@ from config import Config
 
 @contextmanager    #Manejador de contexto, para la conexion
 def __get_cursor():
-    conexion_db = psycopg2.connect(database = Config.DB_NAME, user = Config.DB_USER, password = Config.DB_PASS)#conexion
+    conexion_db = psycopg2.connect(host = Config.DB_HOST, database = Config.DB_NAME, user = Config.DB_USER, password = Config.DB_PASS, port = Config.DB_HOST)#conexion
     cursor = conexion_db.cursor()   #cursor
     try:
         yield cursor
