@@ -4,7 +4,7 @@ from dotenv import load_dotenv  # Instalar con pip install python-dotenv
 load_dotenv()                   # Cargar todo el cotenido de .env en variables de entorno
 
 class Config:
-    SERVER_NAME = "https://biomec.herokuapp.com" 
+    SERVER_NAME = "biomec.herokuapp.com" 
     DEBUG = True
 
     DB_HOST = "localhost"
