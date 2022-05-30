@@ -1,13 +1,13 @@
-{% extends '/base/base.html' %}
+{% extends '/base/layout.html' %}
+
+
 
 
 
 {% block body %}
-<div class="container">
-    <h1>{{title}}</h1>
-    <p>{{description}}</p>
+<div class="position-absolute top-50 start-50 translate-middle">
+    <a class="btn btn-secondary" href="{{ url_for('tipo.login') }}">Iniciar Sesion</a>
+
 </div>
-<a class="btn btn-secondary" href="{{ url_for('tipo.login') }}">Iniciar Sesion</a>
 
 {% endblock %}
-

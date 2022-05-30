@@ -8,8 +8,53 @@
     <p>{{description}}</p>
 </div>
 
-<a class="btn btn-secondary" href="">Registar paciente</a>
+<a class="btn btn-secondary" href="{{ url_for('tipo.registro_persona') }}">Registar paciente</a>
 <a class="btn btn-secondary" href="">Eliminar</a>
 <a class="btn btn-secondary" href="">Editar</a>
-<a class="btn btn-secondary" href="{{ url_for('tipo.logout') }}">Salir</a>
+<a class="btn btn-secondary" href="{{ url_for('tipo.logout') }}">Cerar sesion</a>
+
+<!-- Aqui Creamos una tabla para mostrar todos los datos personalesl-->
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <!-- Aqui las columnas osea los nombres-->
+            <th scope="col">Ci</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido Paterno</th>
+            <th scope="col">Apellido Materno</th>
+            <th scope="col">Telefono</th>     
+            <th scope="col">Email</th>
+            <th scope="col">Fecha de Nac.<th>
+            <th scope="col"></th> 
+                                                          
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+
+        </tr>
+            <!-- Aqui las filas o valores de la tabla    --> 
+        {% for item in items %}   
+        <tr>
+            <td>{{item['ci']}}</td>
+            <td>{{item['nombre']}}</td>
+            <td>{{item['apellidoP']}}</td>
+            <td>{{item['apellidoM']}}</td>
+            <td>{{item['telefono']}}</td>
+            <td>{{item['email']}}</td>
+            <td>{{item['fecha_nacimiento']}}</td>
+
+            <td>
+
+                <a class="btn btn-secondary" href="">Editar</a>
+
+            </td>
+            <td>
+                <a class="btn btn-secondary" href="">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}      
+    </tbody>
+     
+</table>
 {% endblock %}

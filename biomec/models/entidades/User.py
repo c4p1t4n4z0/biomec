@@ -21,7 +21,7 @@ class User(UserMixin):
         return check_password_hash(hashed_password, password)
 
 
-print(generate_password_hash("qwerty"))
+#print(generate_password_hash("qwerty"))
 
 # Este es el hash creado para la prueba el usuario admin,debes de insertarlo en la DB_Lab
 #pbkdf2:sha256:260000$UJdTDI1U1yespnS4$5ec3974d5906c6e3e28a87da7e44e191eeecba9a794ff4bf368072eac040d11e

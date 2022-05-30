@@ -250,9 +250,11 @@ insert into Persona values(16,'FRANZ','RIBERA','SAAVEDRA',78596734,'ribera.franz
 
 
 
-insert into Rol values(1,'Admin')
-insert into Rol values(2,'Recepcionista')
-insert into Rol values(3,'Doctor')
+insert into Rol values(1,'Admin');
+insert into Rol values(2,'Recepcionista');
+insert into Rol values(3,'Doctor');
+insert into Rol values(4,'Paciente');
+
 
 
 insert into Privilegio values(1,'Agregar Usuario')
@@ -262,15 +264,15 @@ insert into Privilegio values(4,'Registrar Doctor')
 insert into Privilegio values(5,'Reporte')
 
 
-insert into Privilegio_Rol values(1,1)
-insert into Privilegio_Rol values(2,1)
-insert into Privilegio_Rol values(3,1)
-insert into Privilegio_Rol values(4,1)
-insert into Privilegio_Rol values(5,1)
-insert into Privilegio_Rol values(3,2)
-insert into Privilegio_Rol values(5,2)
-insert into Privilegio_Rol values(5,3)
-
+insert into Privilegio_Rol values(1,1);
+insert into Privilegio_Rol values(2,1);
+insert into Privilegio_Rol values(3,1);
+insert into Privilegio_Rol values(4,1);
+insert into Privilegio_Rol values(5,1);
+insert into Privilegio_Rol values(3,2);
+insert into Privilegio_Rol values(5,2);
+insert into Privilegio_Rol values(5,3);
+insert into Privilegio_Rol values(5,4);
 
 -- usuarios administradores
 insert into Usuario values(1,'cristian','pbkdf2:sha256:260000$UJdTDI1U1yespnS4$5ec3974d5906c6e3e28a87da7e44e191eeecba9a794ff4bf368072eac040d11e',1,12)
@@ -286,6 +288,12 @@ insert into Usuario values(6,'sandra','pbkdf2:sha256:260000$UJdTDI1U1yespnS4$5ec
 -- usuarios de Tecnico o el doctor ( Laboratorista)
 insert into Usuario values(7,'fatima','pbkdf2:sha256:260000$UJdTDI1U1yespnS4$5ec3974d5906c6e3e28a87da7e44e191eeecba9a794ff4bf368072eac040d11e',3,5)
 
+-- usuarios de Paciente 
+insert into Usuario values(8,'Yesmin','pbkdf2:sha256:260000$UJdTDI1U1yespnS4$5ec3974d5906c6e3e28a87da7e44e191eeecba9a794ff4bf368072eac040d11e',4,7);
+insert into Usuario values(9,'Nathaly','pbkdf2:sha256:260000$UJdTDI1U1yespnS4$5ec3974d5906c6e3e28a87da7e44e191eeecba9a794ff4bf368072eac040d11e',4,8);
+insert into Usuario values(10,'Yoana','pbkdf2:sha256:260000$UJdTDI1U1yespnS4$5ec3974d5906c6e3e28a87da7e44e191eeecba9a794ff4bf368072eac040d11e',4,9);
+insert into Usuario values(11,'Veronica','pbkdf2:sha256:260000$UJdTDI1U1yespnS4$5ec3974d5906c6e3e28a87da7e44e191eeecba9a794ff4bf368072eac040d11e',4,10);
+insert into Usuario values(12,'Katherin','pbkdf2:sha256:260000$UJdTDI1U1yespnS4$5ec3974d5906c6e3e28a87da7e44e191eeecba9a794ff4bf368072eac040d11e',4,11);
 
 
 

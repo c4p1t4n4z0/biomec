@@ -23,3 +23,7 @@ def login(usuario: User) -> User:
 
 def existe(field: str, value: str) -> bool:
     return usuario_db.user_existe(field,value)
+
+
+def sacar_ultimo_id_usuario():
+    return usuario_db.sacar_el_ultimo_id()

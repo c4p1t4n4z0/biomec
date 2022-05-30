@@ -1,0 +1,53 @@
+{% extends '/base/base.html' %}
+
+
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<form class="form-signin" action="paciente" method="POST">
+    <img class="mb-4" src="{{ url_for('static', filename='img/logo.png') }}" alt="" width="310" height="230">
+    {% with messages = get_flashed_messages() %}
+
+    {% if messages %}
+    <br />
+    {% for message in messages %}
+    <div class="alert alert-primary alert-dismissible" role="alert">
+        <strong>{{ message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% endwith %}
+
+    <div>
+        <h3 class="h3 mb-3 fw-normal">Registro de usuario a Biomec Virtual</h3>
+        <p></p>
+        <p>
+            Llene los campos requeridos.
+        </p>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="form-floating">
+
+    </div>
+    <div class="form-floating mt-2">
+        <input type="text" class="form-control" id="username" name="username"  required placeholder="Nombre de usuario">
+        <label for="username" required>Nombre de usuario </label>
+    </div>
+    <div class="form-floating mt-2">
+        <input type="password" class="form-control" id="password" name="password" required placeholder="Constraseña">
+        <label for="password" >Constraseña</label>
+    </div>
+    <div class="form-floating mt-2">
+        <select name="role" required>
+            <option>paciente</option>
+            </select>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Registar usuario</button>
+</div>
+</form>
+{% endblock %}

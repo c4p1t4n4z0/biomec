@@ -8,7 +8,7 @@
 
 {% block body %}
 
-<form class="form-signin" action="registro_user" method="POST">
+<form class="form-signin" action="admin" method="POST">
     <img class="mb-4" src="{{ url_for('static', filename='img/logo.png') }}" alt="" width="310" height="230">
     {% with messages = get_flashed_messages() %}
 
@@ -33,8 +33,6 @@
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <div class="form-floating">
 
-        <input type="number" class="form-control" id="ci" name="ci" required placeholder="Numero de carnet">
-        <label for="ci" required >Numero de carnet</label>
     </div>
     <div class="form-floating mt-2">
         <input type="text" class="form-control" id="username" name="username"  required placeholder="Nombre de usuario">
@@ -46,13 +44,7 @@
     </div>
     <div class="form-floating mt-2">
         <select name="role" required>
-
-            <option>Administrador</option>
-            
-            <option>personal</option>
-            
-            <option>Tecnino</option>
-            
+            <option>paciente</option>
             </select>
     </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Registar usuario</button>
