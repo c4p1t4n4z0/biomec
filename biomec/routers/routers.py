@@ -2,7 +2,7 @@ from flask import Blueprint, flash, redirect, render_template, request, session,
 
 # importamos los controladores de Usuario
 from ..controller import UserController
-
+from .tipo import session
 # importamos los Modelos de usuario
 from ..models.entidades.User import User 
 
@@ -18,10 +18,7 @@ def home():
     parametros = { "title": "Bienvenido a Biomec ",
                   "description": " Tu Laboratorio clinico a tu alcanze"
     }
+    #print(session[''])
     return render_template("home.html", **parametros)
 
     #return redirect(url_for('tipo.login'))
-
-
-
-        

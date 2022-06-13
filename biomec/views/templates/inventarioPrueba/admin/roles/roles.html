@@ -1,0 +1,74 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base/admin/base_dashboard.html" %}
+{% block title %}Roles{% endblock %}
+{% block body %}
+   <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h1 style="text-align:center;">Lista de Roles</h1>
+            </div>
+            {% if roles %}
+            <!-- /.card-header -->
+            <div class="card-body">
+             <div class="box-body table-responsive no-padding">   
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                
+                <tr style="background-color: #526875; color: white;">
+                  <th> # </th>
+                  <th> Nombre </th>
+                  <th>Usuarios</th>
+                  <th>Opciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for role in roles%}
+                <tr>
+                  <td> {{ loop.index }} </td>
+                  <td> {{ role.name }} </td>
+                  <td>
+                  <a href="#" class="btn btn-primary btn-sm" >
+                  <i></i>
+                    {% if role.users %}
+                      {{ role.users.count() }}
+                      </a>
+                    {% else %}
+                      0
+                    {% endif %}
+                  </td>            
+                  <td class="text-right py-0 align-middle">
+                      <div class="btn-group btn-group-sm">
+                        <a href="{{ url_for('admin.edit_role', id=role.id) }}" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                        <a onclick="return confirmDelete();" href="{{ url_for('admin.delete_role', id=role.id) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          <div style="text-align: center">
+            {% else %}
+            <div style="text-align: center">
+            <h3> No se han agregado roles. </h3>
+            <hr class="intro-divider">
+             {% endif %}
+             <a href="{{ url_for('admin.add_role') }}"  class="btn btn-success">
+            <i class="fa fa-plus"></i>
+              Agregar Rol
+             </a>
+            </div>
+          </div>
+            <!-- /.card-body -->
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+ 
+{% endblock %}

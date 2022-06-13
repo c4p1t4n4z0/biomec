@@ -9,8 +9,9 @@ def create(usuario: User) -> User:
     return usuario
 
 def update(usuario: User) -> User:
-    sql = """ UPDATE Usuario SET ID = ID, Nombre = Nomnre, Contraseña = Contraseña,
-                                      ID_Rol_ = ID_Rol_, ID_persona = ID_persona """
+    sql = """ UPDATE Usuario SET Nombre = '{}', Contraseña = '{}',ID_Rol_ = {}',
+                                      WHERE ID = '{}' """.format(usuario.username, usuario.password, usuario.id_rol, usuario.id)
+                                      
 def delete(usuario: User) -> User:
     pass
 
