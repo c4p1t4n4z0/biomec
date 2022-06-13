@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>{{ title }} | bolivia</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="description" content="Sistema Online">
+         <link href="{{url_for('static',filename='frontend/home/assets/css/main.css')}}" rel="stylesheet"></link>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='img/logo/texticruz.ico') }}"> 
+        <noscript><link rel="stylesheet" href="frontend/home/assets/css/noscript.css" /></noscript>
+    </head>
+    <body class="is-preload">
+        <div id="wrapper">
+            <div id="bg"></div>
+            <div id="overlay"></div>
+            <div id="main">
+
+
+                    {% block messages %}
+                    {% include "base/message.html" %}   
+                    {% endblock messages %}
+                
+                        {% block map %}
+                        {% endblock %}
+
+                      {% block body %}
+                      {% endblock %}    
+
+                <!-- Footer -->
+                    <footer id="footer">
+                        <span class="copyright">Copyright © 2022<a href="#"> Todos los derechos reservados</a>.</span>
+                    </footer>
+
+            </div>
+        </div>
+        <script>
+            window.onload = function() { document.body.classList.remove('is-preload'); }
+            window.ontouchmove = function() { return false; }
+            window.onorientationchange = function() { document.body.scrollTop = 0; }
+        </script>
+    </body>
+</html>

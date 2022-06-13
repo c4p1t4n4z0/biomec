@@ -1,4 +1,3 @@
-from re import A
 from ..models.entidades.Persona import Persona 
 from .connection import _fetch_all,_fecth_lastrow_id,_fetch_none,_fetch_one  #las funciones 
 

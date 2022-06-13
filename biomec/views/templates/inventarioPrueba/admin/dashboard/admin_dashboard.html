@@ -1,0 +1,28 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base/admin/base_dashboard.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block body %}
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+        {% if current_user.is_admin %}
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{users_count}}</h3>
+
+                <p>Total de Usuarios</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+            </div>
+          </div>
+          {%endif%}
+          
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+{% endblock %}

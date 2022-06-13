@@ -1,0 +1,62 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base/admin/base_dashboard.html" %}
+{% block title %}
+    {% if add_role %}
+        Add Role
+    {% else %}
+        Edit Role
+    {% endif %}
+{% endblock %}
+{% block body %}
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="card card-default">
+          <div style="background-color: #526875; color: white;" class="card-header">
+            <h3 style="text-align:center;">Roles</h3>
+              {% if add_role %}
+             <p style="text-align:center;">Por favor, rellene el siguiente campos para registrar un nuevo rol:</p> 
+              {% else %}
+             <p style="text-align:center;">Por favor, rellene el siguiente campos para editar rol:</p> 
+             {% endif %}
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+          <form  id="personals-form" method="POST">
+           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <div class="row">
+              <div class="col-md-12" >
+                <div class="control-group{%if form.name.errors %} has-error{% endif %}">
+                    <div class="form-group">
+                        {{ form.name.label }}   
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-users"></i></span>
+                         </div>
+                         {{ form.name(class='form-control',placeholder="Ingrese el nombre del rol" ) }}
+                      </div>
+                         {% for error in form.name.errors %}
+                         <span style="color: red;" class="help-block">{{ error }}</span>                    
+                         {% endfor %}
+                    </div>   
+                </div> 
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          <br>
+          <div id="succes"></div>
+          <div class="row">
+            <div class="form-group col-xs-12">
+              <button type="submit" class="btn btn-success"> Guardar </button>
+            </div>
+          </div>
+          </form>
+          </div>
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->  
+{% endblock %}

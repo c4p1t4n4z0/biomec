@@ -1,0 +1,162 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base/admin/base_dashboard.html" %}
+{% block title %}Perfil{% endblock %}
+
+{% block body %}
+ 
+    <section class="content">
+      <div class="container-fluid">
+        <div class="card card-default">
+          <div style="background-color: #526875; color: white;" class="card-header">
+            <h3 style="text-align:center;">Perfil de Usuario</h3>
+          </div>
+        <div class="row">
+          <div class="col-md-3">
+
+            <!-- Profile Image -->
+            <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle"
+                       src="{{ url_for('static', filename='img/login.png') }}"
+                       alt="User profile picture">
+                </div>
+
+                <h3 class="profile-username text-center">{{user.email}}</h3>
+
+                <p class="text-muted text-center">{{user.id_roles.name}}</p>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-9">
+            <div class="card">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Editar Usuario</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Cambiar Contraseña</a></li>
+
+                </ul>
+              </div><!-- /.card-header -->
+    <div class="card-body">
+      <div class="tab-content">
+        <div class="active tab-pane" id="activity">
+
+                    <!-- Post -->
+          <form  action="{{ url_for('admin.perfil') }}" method="POST">
+           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <div class="row">
+              <div class="col-md-12" >
+                <div class="control-group{%if form_perfil.first_name.errors %} has-error{% endif %}">
+                    <div class="form-group">
+                        {{ form_perfil.first_name.label }}   
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text"><i class=" fas fa-user-circle"></i></span>
+                         </div>
+                         {{ form_perfil.first_name(class='form-control',placeholder="Ingrese su nombre" ) }}
+                      </div>
+                         {% for error in form_perfil.first_name.errors %}
+                         <span style="color: red;"class="help-block">{{ error }}</span>                    
+                         {% endfor %}
+                    </div>   
+                </div> 
+                </div> 
+                <div class="col-md-12" >
+                <div class="control-group{%if form_perfil.last_name.errors %} has-error{% endif %}">
+                    <div class="form-group">
+                        {{ form_perfil.last_name.label }}   
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-address-card"></i></span>
+                         </div>
+                         {{ form_perfil.last_name(class='form-control',placeholder="Ingrese su Apellido" ) }}
+                      </div>
+                         {% for error in form_perfil.last_name.errors %}
+                         <span style="color: red;"class="help-block">{{ error }}</span>                    
+                         {% endfor %}
+                    </div>   
+                </div> 
+                </div> 
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          <br>
+          <div id="succes"></div>
+          <div class="row">
+            <div class="form-group col-xs-12">
+              <button type="submit" class="btn btn-success"> Guardar </button>
+            </div>
+          </div>
+          </form>
+          <!-- /.post -->
+        </div>
+    <!-- /.tab-pane -->
+        <div class="tab-pane" id="timeline">
+        <!-- The timeline -->
+        <!-- Post -->
+          <form  action="{{ url_for('admin.reset_pass') }}" method="POST">
+           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <div class="row">
+              <div class="col-md-12" >
+                <div class="control-group{%if form1.password.errors %} has-error{% endif %}">
+                    <div class="form-group">
+                        {{ form1.password.label }}   
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text"><i class=" fas fa-user-circle"></i></span>
+                         </div>
+                         {{ form1.password(class='form-control',placeholder="Ingrese su nombre" ) }}
+                      </div>
+                         {% for error in form1.password.errors %}
+                         <span style="color: red;"class="help-block">{{ error }}</span>                    
+                         {% endfor %}
+                    </div>   
+                </div> 
+                </div> 
+                <div class="col-md-12" >
+                <div class="control-group{%if form1.password2.errors %} has-error{% endif %}">
+                    <div class="form-group">
+                        {{ form1.password2.label }}   
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-address-card"></i></span>
+                         </div>
+                         {{ form1.password2(class='form-control',placeholder="Ingrese su Apellido" ) }}
+                      </div>
+                         {% for error in form1.password2.errors %}
+                         <span style="color: red;"class="help-block">{{ error }}</span>                    
+                         {% endfor %}
+                    </div>   
+                </div> 
+                </div>  
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          <br>
+          <div id="succes"></div>
+          <div class="row">
+            <div class="form-group col-xs-12">
+              <button type="submit" class="btn btn-success"> Guardar </button>
+            </div>
+          </div>
+          </form>
+        <!-- /.post -->
+        </div>
+                  <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+
+{% endblock %}

@@ -8,7 +8,7 @@ class User(UserMixin):
     def __init__(self,ID, Nombre, Contraseña, ID_Rol_,ID_persona) -> None:        
         self.id = ID
         self.username = Nombre
-        self.password = Contraseña
+        self.password = generate_password_hash(str(Contraseña))
         self.id_rol = ID_Rol_
         self.id_persona = ID_persona
 

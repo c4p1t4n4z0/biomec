@@ -1,0 +1,139 @@
+{% import "bootstrap/utils.html" as utils %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base/admin/base_dashboard.html" %}
+{% block title %}
+{% if register %}
+      Crear Usuario
+{%else%}
+      Editar Usuario 
+{%endif%}
+
+{% endblock %}
+{% block body %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="card card-default">
+          <div style="background-color: #526875; color: white;" class="card-header">
+            <h3 style="text-align:center;">Usuario</h3>
+              {% if register%}
+             <p style="text-align:center;">Por favor, rellene los siguientes campos para registrar un usuario:</p> 
+              {% else %}
+             <p style="text-align:center;">Por favor, rellene los siguientes campos para editar usuario:</p> 
+             {% endif %}
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+          <form  id="personals-form" method="POST">
+           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <div class="row">
+              <div class="col-md-6">
+                <div class="control-group{%if form.email.errors %} has-error{% endif %}">
+                    <div class="form-group">
+                        {{ form.email.label }}   
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+                         </div>
+                         {{ form.email(class='form-control',placeholder="Ingrese su correo electronico" ) }}
+                      </div>
+                         {% for error in form.email.errors %}
+                         <span style="color: red;" class="help-block">{{ error }}</span>                    
+                         {% endfor %}
+                    </div>   
+                </div> 
+                <div class="control-group{%if form.first_name.errors %} has-error{% endif %}">
+                    <div class="form-group">
+                        {{ form.first_name.label }}   
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-user-circle"></i></span>
+                         </div>
+                         {{ form.first_name(class='form-control',placeholder="Ingrese su nombre" ) }}
+                      </div>
+                         {% for error in form.first_name.errors %}
+                         <span style="color: red;" class="help-block">{{ error }}</span>                    
+                         {% endfor %}
+                    </div>   
+                </div>
+                <div class="control-group{%if form.password.errors %} has-error{% endif %}">
+                    <div class="form-group">
+                        {{ form.password.label }}   
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-user-alt"></i></span>
+                         </div>
+                         {{ form.password(class='form-control',placeholder="Ingrese su contraseña" ) }}
+                      </div>
+                         {% for error in form.password.errors %}
+                         <span style="color: red;" class="help-block">{{ error }}</span>                    
+                         {% endfor %}
+                    </div>   
+                </div> 
+
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+              <div class="col-md-4">
+                <div class="control-group{%if form.username.errors %} has-error{% endif %}">
+                    <div class="form-group">
+                        {{ form.username.label }}   
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-user"></i></span>
+                         </div>
+                         {{ form.username(class='form-control',placeholder="Ingrese su nombre de usuario" ) }}
+                      </div>
+                         {% for error in form.username.errors %}
+                         <span style="color: red;" class="help-block">{{ error }}</span>                    
+                         {% endfor %}
+                    </div>   
+                </div>
+                <div class="control-group{%if form.last_name.errors %} has-error{% endif %}">
+                    <div class="form-group">
+                        {{ form.last_name.label }}   
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-user-circle"></i></span>
+                         </div>
+                         {{ form.last_name(class='form-control',placeholder="Ingrese su apellido" ) }}
+                      </div>
+                         {% for error in form.last_name.errors %}
+                         <span style="color: red;" class="help-block">{{ error }}</span>                    
+                         {% endfor %}
+                    </div>   
+                </div> 
+                <!-- /.form-group -->
+                <div class="control-group{%if form.confirm_password.errors %} has-error{% endif %}">
+                    <div class="form-group">
+                        {{ form.confirm_password.label }}   
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="far fa-user-alt"></i></span>
+                         </div>
+                         {{ form.confirm_password(class='form-control',placeholder="Confirme su contraseña" ) }}
+                      </div>
+                         {% for error in form.confirm_password.errors %}
+                         <span style="color: red;" class="help-block">{{ error }}</span>                    
+                         {% endfor %}
+                    </div>   
+                </div>
+                <!-- /.form-group -->
+              </div>
+            </div>
+            <!-- /.row -->
+          <br>
+          <div id="succes"></div>
+          <div class="row">
+            <div class="form-group col-xs-12">
+              <button type="submit" class="btn btn-success"> Guardar </button>
+            </div>
+          </div>
+          </form>
+          </div>
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+
+{% endblock %}

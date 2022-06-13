@@ -1,0 +1,80 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base/admin/base_dashboard.html" %}
+{% block title %}User{% endblock %}
+{% block body %}
+
+  <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h1 style="text-align:center;">Lista de Usuarios</h1>
+            </div>
+            {% if users %}
+            <!-- /.card-header -->
+            <div class="card-body">
+             <div class="box-body table-responsive no-padding">   
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr style="background-color: #526875; color: white;">
+                  <th> # </th>
+                  <th> Nombre </th>
+                  <th> Correo </th>
+                  <th> Rol </th>
+                  <th> Asignar Rol</th>
+                  <th> Opciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users%}
+                <tr>
+                <td>{{ loop.index}}</td>
+                <td>{{ user.first_name }} {{ user.last_name }} </td>
+                <td>{{ user.email}}</td>
+                <td>
+                    {% if user.Role %}
+                    {{ user.Role.name }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td class="text-right py-0 align-middle">
+                  <div class="btn-group btn-group-sm">
+                    <a href="{{ url_for('admin.assign_user', id=user.id) }}"class="btn btn-success">
+                    <i class="fa fa-user-plus"></i>
+                    </a>
+                  </div>
+                </td>   
+                 <td class="text-right py-0 align-middle"> 
+                  <div class="btn-group btn-group-sm">
+                    <a href="{{ url_for('admin.edit_users', id=user.id) }}" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                    <a onclick="return confirmDelete();" href="{{ url_for('admin.delete_users', id=user.id) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                  </div>  
+                </td>                            
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          <div style="text-align: center">
+            {% else %}
+            <div style="text-align: center">
+            <h3> No se han agregado usurios. </h3>
+            <hr class="intro-divider">
+             {% endif %}
+             <a href="{{ url_for('auth.register') }}"  class="btn btn-success">
+            <i class="fa fa-plus"></i>
+              Agregar Usuario
+             </a>
+            </div>
+          </div>
+            <!-- /.card-body -->
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+{% endblock %}

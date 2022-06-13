@@ -1,0 +1,21 @@
+{% import "bootstrap/utils.html" as utils %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base/home/base_home.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+{% block messages %}
+    {% include "base/message.html" %}   
+    {% endblock messages %}
+                <!-- Header -->
+                    <header id="header">
+                        <h1>Sistema Online</h1>
+                        <p>POS &nbsp;&bull;&nbsp; DE &nbsp;&bull;&nbsp; VENTAS</p>
+                        <nav>
+                            <ul>
+
+                                <li><a href="{{ url_for('auth.login') }}" class="icon brands fa fa-expeditedssl"><span class="label">Facebook</span></a></li>
+                                
+                            </ul>
+                        </nav>
+                    </header>
+{% endblock %}
