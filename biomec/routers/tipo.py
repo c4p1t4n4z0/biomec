@@ -4,12 +4,11 @@ from flask import Blueprint, flash, redirect, render_template, request, session,
 # importamos los controladores de Usuario
 from ..controller import UserController
 from ..controller import PersonaController
-
+from ..controller import LaboratoristaController
 # importamos los Modelos 
 from ..models.entidades.User import User 
-
 from ..models.entidades.Persona import Persona 
-
+from ..models.entidades.Laboratorista import Laboratorista
 tipo_scope = Blueprint('tipo',__name__)
 
 #realizar la vista del Inicio o Home "template"
@@ -128,10 +127,24 @@ def registro_user_paciente():
 
 
 #----------------------TECNICO------------------------------
+@tipo_scope.route('/tecnico', methods=['GET', 'POST'])
+
+def tecnico():
+    if 'Esta_logeado' in session:
+
+                # Aqui ponemos Titulo y descripcion 
+        parametros = { "title": "Bienvenido: "+ session['username'] +" al Dasboard de tecnico en laboratorio clinico",
+                        "description": " Tu Laboratorio clinico a tu alcanze"
+        }
+        return render_template("usuario/personal/dashboard_tecnico.html", **parametros)
+
+    return redirect(url_for('tipo.login'))
 
 
 
-#----------------------PERSONAL------------------------------
+
+
+#----------------------Recepcionista------------------------------
 @tipo_scope.route('/recepcionista', methods=['GET', 'POST'])
 def personal():
     if 'Esta_logeado' in session:   
@@ -147,9 +160,32 @@ def personal():
     return redirect(url_for('tipo.login'))
 
 
-@tipo_scope.route('/update/<id_>', methods=['PUT'])
-def actualizar(id_):
-    pass
+#----------------------Registro Laboratorista/ Admin-----------------
+
+
+@tipo_scope.route('/registro_laboratorista',methods=['GET', 'POST'])
+def registro_laboratorista():
+    parametros = {  "title": "Bienvenido(a) "+ session['username'],
+                        "description": "Registro de paciente"}    
+    if request.method == "POST":
+        data = request.form
+        print(data)
+        print('------datos ingresados por formulario-------')
+        persona = Persona(data['ci']  ,data['name'], data['apellidoP'],data['apellidoM'],data['telefono'],data['email'],data['fecha_nacimiento'])  # capturo los datos del formulario y mando al modelo User
+        laboratorista = Laboratorista(data['ci'],data['especialidad'])                                                       # los 0 son nulos porque no metemos desde formulario
+
+        PersonaController.create(persona)
+        LaboratoristaController.create(laboratorista)
+
+        flash('Se Registro Exitosamente')
+
+        return redirect(url_for('tipo.admin')) # solo puede registrar paciente
+
+    return render_template('auth/registro_persona.html')
+
+
+
+
 @tipo_scope.route('/logout')
 def logout():
     if 'Esta_logeado' in session:  
