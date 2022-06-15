@@ -9,8 +9,7 @@
 </div>
 <a class="btn btn-secondary" href="{{ url_for('tipo.admin') }}">Administrador</a>
 <a class="btn btn-secondary" href="{{ url_for('tipo.personal') }}">Recepcionista</a>
-<a class="btn btn-secondary" href="">Paciente</a>
-<a class="btn btn-secondary" href="">Laboratorista</a>
+<a class="btn btn-secondary" href="{{ url_for('tipo.tecnico') }}">Tecnino</a>
 
 <a class="btn btn-secondary" href="{{ url_for('tipo.logout') }}">Cerar sesion</a>
 {% endblock %}
