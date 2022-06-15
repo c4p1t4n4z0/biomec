@@ -1,15 +1,66 @@
-{% extends '/base/base.html' %}
+{% extends '/base/base_dashboard.html' %}
 
 
 
-{% block body %}
-<div class="container">
-    <h1>{{title}}</h1>
-    <p>{{description}}</p>
-</div>
 
-<a class="btn btn-secondary" href="{{ url_for('tipo.registro_persona') }}">Registar</a>
-<a class="btn btn-secondary" href="">Eliminar</a>
-<a class="btn btn-secondary" href="">Editar</a>
-<a class="btn btn-secondary" href="{{ url_for('tipo.logout') }}">Cerar sesion</a>
+
+
+<!-- Aqui Creamos una tabla para mostrar todos los datos personalesl-->
+
+{% block navbars1 %}
+
+<li>
+    <a href="{{ url_for('tipo.registro_persona') }}" class="nav-link text-white">
+      <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+      Registar paciente
+    </a>
+  </li>
+  <li>
+    <a href="#" class="nav-link text-white">
+      <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+      Sacar Reporte
+    </a>
+  </li>
 {% endblock %}
+
+
+{% block tabla %}
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <!-- Aqui las columnas osea los nombres-->
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Contraseña</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Ci personal</th>     
+            <th>Editar</th> 
+            <th>Eliminar</th>                                                              
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+
+        </tr>
+            <!-- Aqui las filas o valores de la tabla    --> 
+        {% for item in items %}   
+        <tr>
+            <td>{{item['id']}}</td>
+            <td>{{item['nombre']}}</td>
+            <td>{{item['Constraseña']}}</td>
+            <td>{{item['id_rol']}}</td>
+            <td>{{item['id_persona']}}</td>
+            <td>
+
+                <a class="btn btn-secondary" href="">Editar</a>
+
+            </td>
+            <td>
+                <a class="btn btn-secondary" href="">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}      
+    </tbody>
+</table>
+{% endblock %}
+
