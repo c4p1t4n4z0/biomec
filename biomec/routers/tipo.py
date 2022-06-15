@@ -136,7 +136,8 @@ def tecnico():
         parametros = { "title": "Bienvenido: "+ session['username'] +" al Dasboard de tecnico en laboratorio clinico",
                         "description": " Tu Laboratorio clinico a tu alcanze"
         }
-        return render_template("usuario/personal/dashboard_personal.html", **parametros)
+        personas_lista = PersonaController.list()        
+        return render_template("usuario/personal/dashboard_personal.html", **parametros, items = personas_lista)
 
     return redirect(url_for('tipo.login'))
 
@@ -154,7 +155,7 @@ def personal():
         }
 
         personas_lista = PersonaController.list()
-        return render_template("usuario/recepcionista/dashboard_recepcionista.html", **parametros, items = personas_lista)
+        return render_template("usuario/personal/dashboard_recepcionista.html", **parametros, items = personas_lista)
 
     return redirect(url_for('tipo.login'))
 
