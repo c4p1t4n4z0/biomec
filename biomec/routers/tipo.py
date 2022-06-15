@@ -136,7 +136,7 @@ def tecnico():
         parametros = { "title": "Bienvenido: "+ session['username'] +" al Dasboard de tecnico en laboratorio clinico",
                         "description": " Tu Laboratorio clinico a tu alcanze"
         }
-        return render_template("usuario/personal/dashboard_personal.html", **parametros) #realizar el template de tecnico
+        return render_template("usuario/personal/dashboard_personal.html", **parametros)
 
     return redirect(url_for('tipo.login'))
 
