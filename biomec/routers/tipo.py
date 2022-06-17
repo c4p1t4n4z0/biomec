@@ -17,9 +17,13 @@ def roles():
     if 'Esta_logeado' in session:
 
                 # Aqui ponemos Titulo y descripcion 
-        parametros = { "title": "Bienvenido(a) Admin: " + session['username'] +" seleccione un Rol",
-                        "description": " Tu Laboratorio clinico a tu alcanze"
-        }
+        parametros = { "title": "Biomec virtual",
+                        "description": "Bienvenido(a) "+ session['username'],
+                        "Nombre": session['username'],
+                        "tipo": "Administrador",
+                        "titulo": "Visualizar Usuarios",
+                        "titulo_usuario":"Listados de los Usuarios que interactuan con el Sistema"
+                }
         return render_template("usuario/tipo.html", **parametros)
 
     return redirect(url_for('tipo.login'))
@@ -88,15 +92,17 @@ def admin():
         return render_template("base/menu.html",**parametros)
     return redirect(url_for('tipo.login'))
 
-@tipo_scope.route('/admin', methods=['GET']) 
+@tipo_scope.route('/usuario', methods=['GET']) 
 def usuario():
 
     # Aqui ponemos Titulo y descripcion 
     parametros = { "title": "Biomec virtual",
                         "description": "Bienvenido(a) "+ session['username'],
                         "Nombre": session['username'],
-                        "tipo": "Administrador"
-    }
+                        "tipo": "Administrador",
+                        "titulo": "Visualizar Usuarios",
+                        "titulo_usuario":"Listados de los Usuarios que interactuan con el Sistema"
+                }
 
     usuarios_lista = UserController.list()
 

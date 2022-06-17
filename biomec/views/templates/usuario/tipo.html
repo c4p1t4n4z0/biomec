@@ -12,4 +12,77 @@
 <a class="btn btn-secondary" href="{{ url_for('tipo.tecnico') }}">Tecnino</a>
 
 <a class="btn btn-secondary" href="{{ url_for('tipo.logout') }}">Cerar sesion</a>
+
+
+
+<body class="gray-bg" style="background-color:#dddcdc">
+    
+    <div class="loginColumns animated fadeInDown">
+        <div class="row">
+            <div class="col-md-6">
+
+    <img alt="" src="{{ url_for('static', filename='img/logo.png') }}"  style="text-align: center" width="310" height="225">
+
+            
+<br>
+            <h4>
+
+            
+            
+            
+            <form id="a" method="get" action="">
+<strong>Sucursal: </strong> <select name="DropSucursal" style="height:40px;width:160px;" id="DropAdmin"> <option value="1">España</option><option value="2">Cosalud</option><option value="3">Sion Urbari</option><option value="4">Niño Jesús</option><option value="6">ONCOLOGICO</option><option value="5">Canal Isuto</option></select>                
+            </form></h4>
+                <br> 
+                <p>Seleccione primeramente la sucursal en la cual iniciara sesion.</p>
+</div>
+ 
+            <div class="col-md-6">
+                
+                  
+                
+<span class="clear"><span class="block m-t-xs"><h4> <strong class="font-bold">Usuario :  </strong> {{ Nombre}}</h4>            
+            <p>
+                Inicia sesión. Para verlo en acción.
+            </p>
+        
+            <div class="form-group"> 
+ <input id="btnAdmin" name="btnAdmin" type="submit" class="btn btn-primary block full-width m-b" value="Administrador" ><select name="TAdmin" id="TAdmin" hidden="" > <option value="1" >Administrador</option></select>                                             
+                <br>   
+                <a class="btn btn-secondary" href="{{ url_for('tipo.admin') }}"></a>        
+            </div>
+                <div class="form-group">   
+<input id="btnBio" name="btnBio" type="submit" class="btn btn-primary block full-width m-b" value="Bioquimico"><select name="TBio" id="TBio" hidden=""> <option value="2">Bioquimico</option></select>                   
+                <br> 
+                </div>
+
+            <div class="form-group">
+<input id="btnTecnico" name="btnTecnico" type="submit" class="btn btn-primary block full-width m-b" value="Tecnico"><select name="TTecnico" id="TTecnico" hidden=""> <option value="3">Tecnico</option></select>                 
+            <br>     
+            </div>
+            <div class="form-group">
+<input id="btnSecre" name="btnRecepcionista" type="submit" class="btn btn-primary block full-width m-b" value="Recepcionista"><select name="TRecep" id="TRecep" hidden=""> <option value="4">Recepcionista</option></select>            <br>   
+            </div>     
+            <div class="form-group">
+<select name="TMed" id="TMed" hidden=""> <option value="5">Contabilidad</option></select>           <br>  
+            </div> 
+            
+            
+            </span></span></div>
+        </div>    
+    <hr>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <p style="text-align: center" class="m-t"> <small> © 2022 BiomecVirtual |  Casa Matriz TEL.  | CEL. <br> 
+                        Sistema de informacion 1| Santa Cruz - Bolivia </small> </p>
+           </div>
+            <div class="col-md-1"></div>
+        </div>
+
+    <script src="http://sistema-old.hemovirtual.com/js/jquery-2.1.1.js"></script>
+    <script src="http://sistema-old.hemovirtual.com/js/bootstrap.min.js"></script>
+
+
+</div></body>
 {% endblock %}

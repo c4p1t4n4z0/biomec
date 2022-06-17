@@ -1,8 +1,224 @@
 {% extends '/base/menu.html' %}
 
 
+{% block navbar %}
+<nav class="navbar-default navbar-static-side" role="navigation">
+  <div class="sidebar-collapse">
+      <ul class="nav" id="side-menu" style="display: block;">
+          <li class="nav-header">
+              <div class="dropdown profile-element">
+                  <span>
+                      <a href="../principal/">
+                          <img alt="image" src="{{ url_for('static', filename='img/biomec.png') }}" style="width: 100%; height: 100%">
+                      </a>
+                  </span>
+                      <center><a class="dropdown-toggle"><span class="clear"> <strong>Suc. España</strong></span></a></center>
+
+                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                      <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"> {{Nombre}} </strong></span> <span class="text-muted text-xs block">{{tipo}}<b class="caret"></b></span> </span>                      
+                  </a>
+                  <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                      <li><a href="{{ url_for('tipo.roles') }}">Cambiar de Cargo</a></li>
+                  </ul>
+              </div>
+              <div class="logo-element">
+                  Hv
+              </div>
+          </li>
+
+
+
+          
+                  <li>
+                      <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Parametros</span> <span class="fa arrow"></span></a>
+                      <ul class="nav nav-second-level collapse">
+                          <li><a href="../seguro/">Gestionar Seguro</a></li><li><a href="../empleado/">Gestionar Empleado</a></li><li><a href="{{ url_for('tipo.usuario') }}">Visualizar Usuarios</a></li><li><a href="../medico/">Gestionar Medico</a></li><li><a href="../especialidad">Gestionar Especialidad</a></li><li><a href="../privilegios/">Privilegios</a></li><li><a href="../gestionarPaciente/">Gestionar Paciente</a></li>                                </ul>
+                  </li>                 
+
+
+                  
+                  <li>
+                      <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">Análisis Clinicos</span> <span class="fa arrow"></span></a>
+                      <ul class="nav nav-second-level collapse">
+                          <li><a href="../precio/">Gestionar Precio de Análisis</a></li><li><a href="../analisis/">GESTIONAR ANALISIS</a></li><li><a href="../muestra">Gestionar Muestra</a></li><li><a href="../metodo">Gestionar Metodo</a></li><li><a href="../grupoAnalisis">Gestionar Grupo de Análisis</a></li>                                </ul>
+                  </li>                 
+
+
+                  
+                  <li>
+                      <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Ingreso y Egreso</span> <span class="fa arrow"></span></a>
+                      <ul class="nav nav-second-level collapse">
+                          <li><a href="../tipoIngreso/">Gestionar Tipos de Ingresos</a></li><li><a href="../tipoEgreso/">Gestionar Tipos de Egresos</a></li><li><a href="../ingresos/">Registro de Ingresos</a></li><li><a href="../egresos/">Registro de Egresos</a></li><li><a href="../flujoCaja/">Flujo de Caja</a></li>                                </ul>
+                  </li>                 
+
+
+                  
+                  <li>
+                      <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Información Clinica</span> <span class="fa arrow"></span></a>
+                      <ul class="nav nav-second-level collapse">
+                          <li><a href="../cotizacion/">Cotizar Examen</a></li><li><a href="../recepcion/">Recepción Paciente</a></li><li><a href="../historicoAnalisis/">Historial de Analisis</a></li><li><a href="../informes/listaResultados.php">Lista de Resultados</a></li>                                </ul>
+                  </li>                 
+
+
+                  
+                  <li>
+                      <a href="#"><i class="fa fa-google-wallet"></i> <span class="nav-label">Transacciones</span> <span class="fa arrow"></span></a>
+                      <ul class="nav nav-second-level collapse">
+                          <li><a href="../informes/listaTransacciones.php">Lista de Transacciones</a></li><li><a href="../cobro/">Registro de Pago</a></li><li><a href="../informesDetalle/listaTransacciones.php">Transacciones con Detalle</a></li>                                </ul>
+                  </li>                 
+
+
+                  
+                  <li>
+                      <a href="#"><i class="fa fa-paste"></i> <span class="nav-label">Seguros</span> <span class="fa arrow"></span></a>
+                      <ul class="nav nav-second-level collapse">
+                          <li><a href="../morosos/">Seguros Morosos</a></li><li><a href="../cobroSeguro/">Registro de Cobro de Seguro</a></li><li><a href="../eliminarPagoSeguro/">Eliminar Pago al Seguro</a></li><li><a href="../alianza/">Alianza</a></li><li><a href="../detalle_seguro/">Detalle de Seguros</a></li>                                </ul>
+                  </li>                 
+
+
+                  
+                  <li>
+                      <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Varios</span> <span class="fa arrow"></span></a>
+                      <ul class="nav nav-second-level collapse">
+                          <li><a href="../comisionMedico/">Comisiones Generales</a></li><li><a href="../comisionMedicoConvenio/">Comisiones Convenios</a></li>                                </ul>
+                  </li>                 
+
+
+                  
+                  <li>
+                      <a href="#"><i class="fa fa-database"></i> <span class="nav-label">Backup</span> <span class="fa arrow"></span></a>
+                      <ul class="nav nav-second-level collapse">
+                          <li><a href="../backup/">Backup</a></li>                                </ul>
+                  </li>                 
+
+
+                                      
+      </ul>
+
+  </div>
+</nav>
+
+{% endblock %}
+
+
+
 {% block tabla %}
-<table class="table table-hover table-dark">
+
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-sm-5">
+      <h2>{{ titulo }}</h2>
+  </div>
+</div>
+
+
+<div class="ibox-title">
+  <h5>{{ titulo_usuario }}</h5>
+  <div class="ibox-tools">
+      <a class="collapse-link">
+          <i class="fa fa-chevron-up"></i>
+      </a>
+      <a class="close-link">
+          <i class="fa fa-times"></i>
+      </a>
+  </div>
+</div>
+
+
+<div class="ibox-content">
+  <div class="row">
+      <form action="javascript: fn_buscar();" id="frm_buscar" method="get" name="frm_buscar">  
+      <div class="col-sm-3 m-b">
+          <div class="form-group">
+              <fieldset>
+              <label for="user_name">Nombre</label>
+              <br>                
+              <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input name="criterio_usu_per" type="text" class="form-control ui-autocomplete-input" placeholder="Nombre Completo..." id="nombre_persona" autocomplete="off">
+              <script>
+                      $('#nombre_persona').autocomplete({
+                          source: function( request, response ) {
+                              $.ajax({
+                                  url : 'autocompletado.php',
+                                  dataType: "json",
+                                  data: {
+                                     name_startsWith: request.term,
+                                     type: $("#criterio_ordenar_por").val()
+                                  },
+                                   success: function( data ) {
+                                       response( $.map( data, function( item ) {
+                                          return {
+                                              label: item,
+                                              value: item
+                                          };
+                                      }));
+                                  }
+                              });
+                          }	      	
+                      });
+                  </script>
+              </fieldset>   
+          </div>
+      </div>
+      <div class="col-sm-2 m-b">                                
+          <div class="form-group">
+              <fieldset>
+                  <label for="user_name">Buscar Por</label>
+                  <br>
+                  <select name="criterio_ordenar_por" id="criterio_ordenar_por" class="form-control">
+                      <option selected="" value="E">Empleado</option>
+                      <option value="M">Medico</option>
+                      <option value="P">Paciente</option>
+                  </select>
+              </fieldset>    
+          </div>    
+      </div>
+          
+      <div class="col-sm-2 m-b">
+          <div class="form-group">
+              <fieldset>
+                  <label for="user_name">De Manera</label>
+                  <br>                
+                      <select name="criterio_orden" class="form-control" id="criterio_orden">
+
+                          <option value="asc">Ascendente</option>
+                          <option value="desc" selected="">Descendente</option>
+                      </select>
+              </fieldset>  
+          </div>
+      </div>
+      <div class="col-sm-2 m-b">
+          <div class="form-group">
+              <fieldset>
+                  <label for="user_name">Nro Registros</label>
+                  <br>                  
+                      <select name="criterio_mostrar" class="form-control" id="criterio_mostrar">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="5">5</option>
+                          <option value="10">10</option>
+                          <option value="20" selected="selected">20</option>
+                          <option value="40">40</option>
+                      </select>
+              </fieldset>    
+          </div> 
+      </div>
+      <div class="col-sm-2 m-b">
+          <div class="input-group">                                      
+              <fieldset>
+                  <label for="user_name" style="text-align: center"></label>
+                  <br>
+<input id="btnBuscar" class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit" value="Buscar" style="display: block;">
+                  <img id="imgAjax" src="../images/ajax-load.gif" style="display: none;" hidden="">
+              </fieldset>  
+          </div>
+      </div>
+      </form>
+  </div>
+</div>
+
+
+
+
+<table class="table table-striped">
     <thead>
         <tr>
             <!-- Aqui las columnas osea los nombres-->
@@ -11,8 +227,9 @@
             <th scope="col">Contraseña</th>
             <th scope="col">Rol</th>
             <th scope="col">Ci personal</th>     
-            <th>Editar</th> 
-            <th>Eliminar</th>                                                              
+            <th scope="col">Editar</th> 
+            <th scope="col">Eliminar</th> 
+
         </tr>
     </thead>
     <tbody>
@@ -29,7 +246,8 @@
             <td>{{item['id_persona']}}</td>
             <td>
 
-                <a class="btn btn-secondary" href="">Editar</a>
+              <a href="javascript: fn_mostrar_frm_modificar('E',27,'Silvia Panoso .','Panoso');">
+                <img src="{{ url_for('static', filename='extras/ico/page_edit.png') }}" style="width:25px;height: 25px;"></a>
 
             </td>
             <td>
