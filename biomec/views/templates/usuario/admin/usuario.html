@@ -1,0 +1,43 @@
+{% extends '/base/menu.html' %}
+
+
+{% block tabla %}
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <!-- Aqui las columnas osea los nombres-->
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Contraseña</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Ci personal</th>     
+            <th>Editar</th> 
+            <th>Eliminar</th>                                                              
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+
+        </tr>
+            <!-- Aqui las filas o valores de la tabla    --> 
+        {% for item in items %}   
+        <tr>
+            <td>{{item['id']}}</td>
+            <td>{{item['nombre']}}</td>
+            <td>{{item['Constraseña']}}</td>
+            <td>{{item['id_rol']}}</td>
+            <td>{{item['id_persona']}}</td>
+            <td>
+
+                <a class="btn btn-secondary" href="">Editar</a>
+
+            </td>
+            <td>
+                <a class="btn btn-secondary" href="">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}      
+    </tbody>
+</table>
+
+{% endblock %}
