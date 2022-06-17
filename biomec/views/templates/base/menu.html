@@ -10,264 +10,140 @@
     <title> {{title}}</title>
 
 
-    <link href="http://sistema-old.hemovirtual.com/css/bootstrap.min.css" rel="stylesheet" media="all">
-    <link href="http://sistema-old.hemovirtual.com/font-awesome/css/font-awesome.css" rel="stylesheet" media="all">
+    <link href="{{ url_for('static', filename='css/bootstrap/bootstrap.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ url_for('static', filename='css/font-awesome.css') }}" rel="stylesheet" media="all">
 
-    <!-- iconos de botones -->
+    <!-- iconos de botones necesita internet si o si-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
     <!-- Toastr style -->
-    <link href="http://sistema-old.hemovirtual.com/css/plugins/toastr/toastr.min.css" rel="stylesheet" media="all">
+    <link href="{{ url_for('static', filename='css/toastr.min.css') }}" rel="stylesheet" media="all">
 
     <!-- Gritter -->
-    <link href="http://sistema-old.hemovirtual.com/js/plugins/gritter/jquery.gritter.css" rel="stylesheet" media="all">
+    <link href="{{ url_for('static', filename='js/jquery.gritter.css') }}" rel="stylesheet" media="all">
 
-    <link href="http://sistema-old.hemovirtual.com/css/animate.css" rel="stylesheet" media="all">
-    <link href="http://sistema-old.hemovirtual.com/css/style.css" rel="stylesheet" media="all">
+    <link href="{{ url_for('static', filename='css/animate.css') }}" rel="stylesheet" media="all">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" media="all">
 
 <style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style></head>
 
             
-<body class="pace-running"><div class="pace pace-active"><div class="pace-progress" style="transform: translate3d(100%, 0px, 0px);" data-progress-text="99%" data-progress="99">
-  <div class="pace-progress-inner"></div>
-</div>
-<div class="pace-activity"></div></div>
-    <div id="wrapper">
-        <nav class="navbar-default navbar-static-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav" id="side-menu" style="display: block;">
-                    <li class="nav-header">
-                        <div class="dropdown profile-element">
-                            <span>
-                                <a href="../principal/">
-                                    <img alt="image" src="{{ url_for('static', filename='img/biomec.png') }}" style="width: 100%; height: 100%">
-                                </a>
-                            </span>
-                                <center><a class="dropdown-toggle"><span class="clear"> <strong>Suc. España</strong></span></a></center>
-
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"> {{Nombre}} </strong></span> <span class="text-muted text-xs block">{{tipo}}<b class="caret"></b></span> </span>                      
-                            </a>
-                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="{{ url_for('tipo.roles') }}">Cambiar de Cargo</a></li>
-                            </ul>
-                        </div>
-                        <div class="logo-element">
-                            Hv
-                        </div>
-                    </li>
-
-
-
-                    
-                            <li>
-                                <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Parametros</span> <span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="../seguro/">Gestionar Seguro</a></li><li><a href="../empleado/">Gestionar Empleado</a></li><li><a href="{{ url_for('tipo.usuario') }}">Visualizar Usuarios</a></li><li><a href="../medico/">Gestionar Medico</a></li><li><a href="../especialidad">Gestionar Especialidad</a></li><li><a href="../privilegios/">Privilegios</a></li><li><a href="../gestionarPaciente/">Gestionar Paciente</a></li>                                </ul>
-                            </li>                 
-
-
-                            
-                            <li>
-                                <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">Análisis Clinicos</span> <span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="../precio/">Gestionar Precio de Análisis</a></li><li><a href="../analisis/">GESTIONAR ANALISIS</a></li><li><a href="../muestra">Gestionar Muestra</a></li><li><a href="../metodo">Gestionar Metodo</a></li><li><a href="../grupoAnalisis">Gestionar Grupo de Análisis</a></li>                                </ul>
-                            </li>                 
-
-
-                            
-                            <li>
-                                <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Ingreso y Egreso</span> <span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="../tipoIngreso/">Gestionar Tipos de Ingresos</a></li><li><a href="../tipoEgreso/">Gestionar Tipos de Egresos</a></li><li><a href="../ingresos/">Registro de Ingresos</a></li><li><a href="../egresos/">Registro de Egresos</a></li><li><a href="../flujoCaja/">Flujo de Caja</a></li>                                </ul>
-                            </li>                 
-
-
-                            
-                            <li>
-                                <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Información Clinica</span> <span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="../cotizacion/">Cotizar Examen</a></li><li><a href="../recepcion/">Recepción Paciente</a></li><li><a href="../historicoAnalisis/">Historial de Analisis</a></li><li><a href="../informes/listaResultados.php">Lista de Resultados</a></li>                                </ul>
-                            </li>                 
-
-
-                            
-                            <li>
-                                <a href="#"><i class="fa fa-google-wallet"></i> <span class="nav-label">Transacciones</span> <span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="../informes/listaTransacciones.php">Lista de Transacciones</a></li><li><a href="../cobro/">Registro de Pago</a></li><li><a href="../informesDetalle/listaTransacciones.php">Transacciones con Detalle</a></li>                                </ul>
-                            </li>                 
-
-
-                            
-                            <li>
-                                <a href="#"><i class="fa fa-paste"></i> <span class="nav-label">Seguros</span> <span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="../morosos/">Seguros Morosos</a></li><li><a href="../cobroSeguro/">Registro de Cobro de Seguro</a></li><li><a href="../eliminarPagoSeguro/">Eliminar Pago al Seguro</a></li><li><a href="../alianza/">Alianza</a></li><li><a href="../detalle_seguro/">Detalle de Seguros</a></li>                                </ul>
-                            </li>                 
-
-
-                            
-                            <li>
-                                <a href="#"><i class="fa fa-dollar"></i> <span class="nav-label">Varios</span> <span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="../comisionMedico/">Comisiones Generales</a></li><li><a href="../comisionMedicoConvenio/">Comisiones Convenios</a></li>                                </ul>
-                            </li>                 
-
-
-                            
-                            <li>
-                                <a href="#"><i class="fa fa-database"></i> <span class="nav-label">Backup</span> <span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="../backup/">Backup</a></li>                                </ul>
-                            </li>                 
-
-
-                                                
-                </ul>
-
+<body class="pace-running">
+    <div class="pace pace-active">
+            <div class="pace-progress" style="transform: translate3d(100%, 0px, 0px);" data-progress-text="99%" data-progress="99">
+                <div class="pace-progress-inner"></div>
             </div>
-        </nav>
+        <div class="pace-activity"></div>
+    </div>
+      <div id="wrapper">
+        {% block navbar %}          
 
+
+        <!-- aqui el menu del navbar de cada usuario, con su template especifico -->
+
+
+        {% endblock %}          
         <div id="page-wrapper" class="gray-bg dashbard-1" style="min-height: 874px;">
-            <div class="row border-bottom">
-                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-                    <div class="navbar-header">
-                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                <div class="row border-bottom">
+                    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                        <div class="navbar-header">
+                            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
 
-                    </div>
-                    <ul class="nav navbar-top-links navbar-right">
-                        <li>
-                            <span class="m-r-sm text-muted welcome-message">{{description}}</span>
-                        </li>
-                        <li>
-                            <a href="{{ url_for('tipo.logout') }}">
-                                <i class="fa fa-sign-out"></i> Salir
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+                        </div>
+                        <ul class="nav navbar-top-links navbar-right">
+                            <li>
+                                <span class="m-r-sm text-muted welcome-message">{{description}}</span>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('tipo.logout') }}">
+                                    <i class="fa fa-sign-out"></i> Salir
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
               
-        <div class="row">
-            <div class="col-lg-12">
-                
-                <div class="wrapper wrapper-content">
-                        <div class="row">
-                            <div class="table-responsive">
-                                {% block tabla %}
-                                {% endblock %}
-                              </div>                            
-                    <div class="col-lg-2">
+            <div class="row">
+                <div class="col-lg-12">
+                    
+                    <div class="wrapper wrapper-content">
+                            <div class="row">
+                                <div class="table-responsive">
+                                    {% block tabla %}
+                                        <!-- aqui se mostrara las tablas dependiendo del usuario, con su template especifico -->
+                                    {% endblock %}
+                                </div> 
 
-                          
-                     </div>
-                            
-                               
+                                <div class="col-lg-2">
+                                </div>
+                                
+                                
 
                             
-                        <div class="col-lg-7">
-                            <div class="ibox float-e-margins">
-           <span>
-               <img alt="image" src="{{ url_for('static', filename='img/logo.png') }}" style="width: 100%; height: 80%">
-                             </span>
-                            
+                                <div class="col-lg-7">
+                                    {% block imagen %}
+                                         <!-- aqui se mostrara solo la imagen para el inico del dashborar de todo los usuario -->
+  
+                                    {% endblock %}
+                                </div>
                             
                             </div>
-                        </div>
-                           
-                        </div>
-                </div>
-                
-                
-                
-                
-                
+                    </div>
+                    
+                    <br><br><br>
 
-                
-                <br><br><br>
-                <!---
-                <div class="footer" style=" position: fixed; bottom: 0;z-index: 100;">
-                    <div class="pull-right">
-                        <strong> Laboratorio HemoVirtual S.R.L.</strong>
-                        <h5 id="Fecha">  
-                        <script type="text/javascript">
-                            //<![CDATA[
-                            function makeArray() {
-                            for (i = 0; i<makeArray.arguments.length; i++)
-                            this[i + 1] = makeArray.arguments[i];}
-                            var months = new makeArray('Enero','Febrero','Marzo','Abril','Mayo',
-                            'Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');
-                            var days=new makeArray('Domingo','Lunes','Martes','Miercoles','Jueves','Viernes',
-                            'Sabado');
-                            var date = new Date();
-                            var day = date.getDate();
-                            var month = date.getMonth() + 1;
-                            var yy = date.getYear();
-                            var year = (yy < 1000) ? yy + 1900 : yy;
-                            document.write(days[date.getDay()+1]+" "+day + " de " + months[month] + " del " + year);
-                            //]]>
-                        </script>
-                        </h5>
-                    </div>
-                    <div>
-                        <strong>Copyright © 2015 HemoVirtual S.R.L. | Casa Matriz TEL. 3143131 | CEL. 71770000  <br> WorkCorp  | Santa Cruz - Bolivia</strong>
-                    </div>
                 </div>
-                ---->
-                
             </div>
         </div>
-    </div>
-</div>
         
   
-        
+    </div>  
     <!-- Mainly scripts -->
-    <script async="" src="http://sistema-old.hemovirtual.com/js/jquery-1.7.js"></script><script src="../js/jquery-1.7.js"></script>
-    <script src="http://sistema-old.hemovirtual.com/js/jquery-2.1.1.js"></script>
-    <script language="javascript" type="text/javascript" src="http://sistema-old.hemovirtual.com/js/jquery.blockUI.js"></script>
-    <script src="http://sistema-old.hemovirtual.com/js/bootstrap.min.js"></script>
-    <script src="http://sistema-old.hemovirtual.com/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script async="" src="{{ url_for('static', filename='js/jquery-1.7.js') }}" ></script><script src="../js/jquery-1.7.js"></script>
+    <script src="{{ url_for('static', filename='js/jquery-2.1.1.js') }}"></script>
+    <script language="javascript" type="text/javascript" src="{{ url_for('static', filename='js/jquery.blockUI.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}" ></script>
+    <script src="{{ url_for('static', filename='js/jquery.metisMenu.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.slimscroll.min.js') }}"></script>
 
 
     
     
     <!-- Flot -->
-    <script src="http://sistema-old.hemovirtual.com/js/plugins/flot/jquery.flot.js"></script>
-    <script src="http://sistema-old.hemovirtual.com/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="http://sistema-old.hemovirtual.com/js/plugins/flot/jquery.flot.spline.js"></script>
-    <script src="http://sistema-old.hemovirtual.com/js/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="http://sistema-old.hemovirtual.com/js/plugins/flot/jquery.flot.pie.js"></script>
+    <script src="{{ url_for('static', filename='js/jquery.flot.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.flot.tooltip.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.flot.spline.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.flot.resize.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.flot.pie.js') }}"></script>
 
     <!-- Peity -->
-    <script src="http://sistema-old.hemovirtual.com/js/plugins/peity/jquery.peity.min.js"></script>
-    <script src="http://sistema-old.hemovirtual.com/js/demo/peity-demo.js"></script>
+    <script src="{{ url_for('static', filename='js/jquery.peity.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/peity-demo.js') }}"></script>
 
     <!-- Custom and plugin javascript -->
-    <script src="http://sistema-old.hemovirtual.com/js/inspinia.js"></script>
-    <script src="http://sistema-old.hemovirtual.com/js/plugins/pace/pace.min.js"></script>
+    <script src="{{ url_for('static', filename='js/inspinia.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/pace.min.js') }}"></script>
 
     
     
     <!-- jQuery UI -->
-    <script src="http://sistema-old.hemovirtual.com/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="{{ url_for('static', filename='js/jquery-ui.min.js') }}"></script>
 
     <!-- GITTER -->
-    <script src="http://sistema-old.hemovirtual.com/js/plugins/gritter/jquery.gritter.min.js"></script>
+    <script src="{{ url_for('static', filename='js/jquery.gritter.min.js') }}"></script>
 
     <!-- Sparkline -->
-    <script src="http://sistema-old.hemovirtual.com/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="{{ url_for('static', filename='js/jquery.sparkline.min.js') }}"></script>
 
     <!-- Sparkline demo data  -->
-    <script src="http://sistema-old.hemovirtual.com/js/demo/sparkline-demo.js"></script>
+    <script src="{{ url_for('static', filename='js/sparkline-demo.js') }}"></script>
 
     <!-- ChartJS-->
-    <script src="http://sistema-old.hemovirtual.com/js/plugins/chartJs/Chart.min.js"></script>
+    <script src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
 
     <!-- Toastr -->
-    <script src="http://sistema-old.hemovirtual.com/js/plugins/toastr/toastr.min.js"></script>
+    <script src="{{ url_for('static', filename='js/toastr.min.js') }}"></script>
 
 
     <script>
@@ -279,7 +155,7 @@
                     showMethod: 'slideDown',
                     timeOut: 4000
                 };
-                toastr.success('Mas que un Laboratorio...', 'Bienvenido a HemoVirtual');
+                toastr.success('Mas que un Laboratorio...', 'Bienvenido a Biomec Virtual');
 
             }, 1300);
 

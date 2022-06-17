@@ -89,7 +89,7 @@ def admin():
 
         #return render_template("usuario/admin/dashboard_admin.html", **parametros, items = usuarios_lista)
         #return render_template("base/navbar.html")
-        return render_template("base/menu.html",**parametros)
+        return render_template("usuario/admin/dashboard_admin.html",**parametros)
     return redirect(url_for('tipo.login'))
 
 @tipo_scope.route('/usuario', methods=['GET']) 
