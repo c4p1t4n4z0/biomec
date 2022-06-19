@@ -1,0 +1,526 @@
+{% extends '/base/menu.html' %} {% block navbar %}
+<script
+  language="javascript"
+  type="text/javascript"
+  src="{{ url_for('static', filename='js/JSSeguro.js') }}"
+></script>
+
+<style type="text/css">
+  .centrar {
+    position: absolute;
+    /*nos posicionamos en el centro del navegador*/
+    top: 30%;
+    left: 15%;
+  }
+</style>
+
+<nav class="navbar-default navbar-static-side" role="navigation">
+  <div class="sidebar-collapse">
+    <ul class="nav" id="side-menu" style="display: block">
+      <li class="nav-header">
+        <div class="dropdown profile-element">
+          <span>
+            <a href="../principal/">
+              <img
+                alt="image"
+                src="{{ url_for('static', filename='img/biomec.png') }}"
+                style="width: 100%; height: 100%"
+              />
+            </a>
+          </span>
+          <center>
+            <a class="dropdown-toggle"
+              ><span class="clear"> <strong>Suc. España</strong></span></a
+            >
+          </center>
+
+          <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <span class="clear">
+              <span class="block m-t-xs">
+                <strong class="font-bold"> {{Nombre}} </strong></span
+              >
+              <span class="text-muted text-xs block"
+                >{{tipo}}<b class="caret"></b
+              ></span>
+            </span>
+          </a>
+          <ul class="dropdown-menu animated fadeInRight m-t-xs">
+            <li><a href="{{ url_for('tipo.roles') }}">Cambiar de Cargo</a></li>
+          </ul>
+        </div>
+        <div class="logo-element">Bv</div>
+      </li>
+
+      <li>
+        <a href="#"
+          ><i class="fa fa-th-large"></i>
+          <span class="nav-label">Parametros</span>
+          <span class="fa arrow"></span
+        ></a>
+        <ul class="nav nav-second-level collapse">
+          <li><a href="../seguro/">Gestionar Seguro</a></li>
+          <li><a href="../personal/">Gestionar Empleado</a></li>
+          <li>
+            <a href="{{ url_for('tipo.usuario') }}">Visualizar Usuarios</a>
+          </li>
+          <li><a href="../medico/">Gestionar Medico</a></li>
+          <li><a href="../especialidad">Gestionar Especialidad</a></li>
+          <li><a href="../privilegios/">Privilegios</a></li>
+          <li><a href="../gestionarPaciente/">Gestionar Paciente</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#"
+          ><i class="fa fa-flask"></i>
+          <span class="nav-label">Análisis Clinicos</span>
+          <span class="fa arrow"></span
+        ></a>
+        <ul class="nav nav-second-level collapse">
+          <li><a href="../precio/">Gestionar Precio de Análisis</a></li>
+          <li><a href="../analisis/">GESTIONAR ANALISIS</a></li>
+          <li><a href="../muestra">Gestionar Muestra</a></li>
+          <li><a href="../metodo">Gestionar Metodo</a></li>
+          <li><a href="../grupoAnalisis">Gestionar Grupo de Análisis</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#"
+          ><i class="fa fa-table"></i>
+          <span class="nav-label">Ingreso y Egreso</span>
+          <span class="fa arrow"></span
+        ></a>
+        <ul class="nav nav-second-level collapse">
+          <li><a href="../tipoIngreso/">Gestionar Tipos de Ingresos</a></li>
+          <li><a href="../tipoEgreso/">Gestionar Tipos de Egresos</a></li>
+          <li><a href="../ingresos/">Registro de Ingresos</a></li>
+          <li><a href="../egresos/">Registro de Egresos</a></li>
+          <li><a href="../flujoCaja/">Flujo de Caja</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#"
+          ><i class="fa fa-edit"></i>
+          <span class="nav-label">Información Clinica</span>
+          <span class="fa arrow"></span
+        ></a>
+        <ul class="nav nav-second-level collapse">
+          <li><a href="../cotizacion/">Cotizar Examen</a></li>
+          <li><a href="../recepcion/">Recepción Paciente</a></li>
+          <li><a href="../historicoAnalisis/">Historial de Analisis</a></li>
+          <li>
+            <a href="../informes/listaResultados.php">Lista de Resultados</a>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#"
+          ><i class="fa fa-google-wallet"></i>
+          <span class="nav-label">Transacciones</span>
+          <span class="fa arrow"></span
+        ></a>
+        <ul class="nav nav-second-level collapse">
+          <li>
+            <a href="../informes/listaTransacciones.php"
+              >Lista de Transacciones</a
+            >
+          </li>
+          <li><a href="../cobro/">Registro de Pago</a></li>
+          <li>
+            <a href="../informesDetalle/listaTransacciones.php"
+              >Transacciones con Detalle</a
+            >
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#"
+          ><i class="fa fa-paste"></i> <span class="nav-label">Seguros</span>
+          <span class="fa arrow"></span
+        ></a>
+        <ul class="nav nav-second-level collapse">
+          <li><a href="../morosos/">Seguros Morosos</a></li>
+          <li><a href="../cobroSeguro/">Registro de Cobro de Seguro</a></li>
+          <li><a href="../eliminarPagoSeguro/">Eliminar Pago al Seguro</a></li>
+          <li><a href="../alianza/">Alianza</a></li>
+          <li><a href="../detalle_seguro/">Detalle de Seguros</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#"
+          ><i class="fa fa-dollar"></i> <span class="nav-label">Varios</span>
+          <span class="fa arrow"></span
+        ></a>
+        <ul class="nav nav-second-level collapse">
+          <li><a href="../comisionMedico/">Comisiones Generales</a></li>
+          <li><a href="../comisionMedicoConvenio/">Comisiones Convenios</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#"
+          ><i class="fa fa-database"></i> <span class="nav-label">Backup</span>
+          <span class="fa arrow"></span
+        ></a>
+        <ul class="nav nav-second-level collapse">
+          <li><a href="../backup/">Backup</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% endblock %} {% block tabla %}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-sm-5">
+    <h2>{{ titulo }}</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+      <div class="ibox-title">
+        <h5>{{ titulo_usuario }}</h5>
+        <div class="ibox-tools">
+          <a class="collapse-link">
+            <i class="fa fa-chevron-up"></i>
+          </a>
+          <a class="close-link">
+            <i class="fa fa-times"></i>
+          </a>
+        </div>
+      </div>
+      <div class="ibox-content">
+        <div class="row">
+          <form
+            action="javascript: fn_buscar();"
+            id="frm_buscar"
+            name="frm_buscar"
+          >
+            <div class="col-sm-3 m-b">
+              <div class="form-group">
+                <fieldset>
+                  <label for="user_name">Nombre del Seguro</label>
+                  <br />
+                  <input
+                    name="criterio_usu_per"
+                    class="form-control"
+                    type="text"
+                    id="criterio_usu_per"
+                  />
+                </fieldset>
+              </div>
+            </div>
+            <div class="col-sm-2 m-b">
+              <div class="form-group">
+                <fieldset>
+                  <label for="user_name">Ordenar Por</label>
+                  <br />
+                  <select
+                    name="criterio_ordenar_por"
+                    id="criterio_ordenar_por"
+                    class="form-control"
+                  >
+                    <option value="idSeguro">Nro</option>
+                    <option value="nombre">Seguro</option>
+                  </select>
+                </fieldset>
+              </div>
+            </div>
+            <div class="col-sm-2 m-b">
+              <div class="form-group">
+                <fieldset>
+                  <label for="user_name">De Manera</label>
+                  <br />
+                  <select
+                    name="criterio_orden"
+                    id="criterio_orden"
+                    class="form-control"
+                  >
+                    <option value="asc">Ascendente</option>
+                    <option value="desc">Descendente</option>
+                  </select>
+                </fieldset>
+              </div>
+            </div>
+            <div class="col-sm-2 m-b">
+              <div class="form-group">
+                <fieldset>
+                  <label for="user_name">Nro Registros</label>
+                  <br />
+                  <select
+                    name="criterio_mostrar"
+                    id="criterio_mostrar"
+                    class="form-control"
+                  >
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20" selected="selected">20</option>
+                    <option value="40">40</option>
+                  </select>
+                </fieldset>
+              </div>
+            </div>
+            <div class="col-sm-2 m-b">
+              <div class="input-group">
+                <fieldset>
+                  <label for="user_name" style="text-align: center"></label>
+                  <br />
+                  <input
+                    id="btnBuscar"
+                    class="btn btn-sm btn-primary pull-right"
+                    type="submit"
+                    value="Buscar"
+                  />
+                  <img id="imgAjax" src="../images/ajax-load.gif" hidden />
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="ibox-title">
+        <div id="div_listar"></div>
+      </div>
+      <div
+        id="div_oculto"
+        style="
+          display: none;
+          text-align: center;
+          height: 90%;
+          overflow-y: scroll;
+          overflow-x: hidden;
+        "
+        class="wrapper wrapper-content animated fadeInRight"
+      >
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+              <div style="text-align: center" class="ibox-title">
+                <h5>Agregar Nuevo Seguro</h5>
+              </div>
+              <form
+                action="javascript: fn_agregar();"
+                method="post"
+                id="frm_agregar_seguro"
+              >
+                <div class="ibox-title">
+                  <div class="form-group">
+                    <div class="row">
+                      <label class="col-lg-2 control-label"
+                        >Nombre Seguro</label
+                      >
+                      <div class="col-lg-10">
+                        <input
+                          name="seguro_name"
+                          type="text"
+                          id="metodo_name"
+                          class="form-control"
+                          size="16"
+                          class="required"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <input
+                          name="agregar"
+                          id="btnAgregar"
+                          type="submit"
+                          class="btn btn-sm btn-primary pull-right m-t-n-xs"
+                          id="agregar"
+                          value="Agregar"
+                        />
+                      </div>
+
+                      <div class="col-lg-6">
+                        <input
+                          name="cancelar"
+                          id="btnCancelarA"
+                          type="button"
+                          class="btn btn-sm btn-primary pull-left m-t-n-xs"
+                          id="cancelar"
+                          value="Cancelar"
+                          onclick="fn_cerrar();"
+                        />
+                      </div>
+                      <img
+                        align="center"
+                        id="imgAjaxAgregar"
+                        src="../images/ajax-load.gif"
+                        hidden
+                      />
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        id="div_modif"
+        style="
+          display: none;
+          text-align: center;
+          height: 90%;
+          overflow-y: scroll;
+          overflow-x: hidden;
+        "
+        class="wrapper wrapper-content animated fadeInRight"
+      >
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+              <div class="ibox-title">
+                <h5>Modificar los datos</h5>
+              </div>
+              <form
+                action="javascript: fn_modificar();"
+                method="post"
+                id="frm_modif_seguro"
+              >
+                <div class="ibox-title">
+                  <div class="form-group">
+                    <div class="row">
+                      <label class="col-lg-2 control-label"
+                        >Nombre Seguro</label
+                      >
+                      <div class="col-lg-10">
+                        <input
+                          name="id_seguro_modif"
+                          type="text"
+                          id="id_seguro_modif"
+                          hidden
+                        />
+                        <input
+                          name="seguro_name_modif"
+                          type="text"
+                          placeholder="Nombre..."
+                          class="form-control"
+                          id="seguro_name_modif"
+                          size="16"
+                          class="required"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <input
+                          name="modificar"
+                          id="btnModif"
+                          type="submit"
+                          id="modificar"
+                          class="btn btn-sm btn-primary pull-right m-t-n-xs"
+                          value="Modificar"
+                        />
+                      </div>
+                      <div class="col-lg-6">
+                        <input
+                          name="cancelar"
+                          id="btnCancelarM"
+                          type="button"
+                          id="cancelar"
+                          class="btn btn-sm btn-primary pull-left m-t-n-xs"
+                          value="Cancelar"
+                          onclick="fn_cerrar();"
+                        />
+                      </div>
+                      <img
+                        align="center"
+                        id="imgAjaxModif"
+                        src="../images/ajax-load.gif"
+                        hidden
+                      />
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Insertando tabla con los datos-->
+<div class="ibox-title">
+  <div id="div_listar">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nro</th>
+            <th>Nombre Seguro</th>
+            <th>
+              Editar Seguro <br />
+              (Click Aqui)
+            </th>
+            <th>
+              Editar Precio <br />
+              (Click Aqui)
+            </th>
+            <th>
+              <a href="javascript: fn_mostrar_frm_agregar();"
+                ><img
+                  src="{{ url_for('static', filename='extras/ico/add.png') }}"
+                  style="width: 25px; height: 25px"
+              /></a>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr></tr>
+          <!-- Aqui las filas o valores de la tabla    -->
+          {% for item in items %}
+          <tr></tr>          
+          <td>{{item['id']}}</td>
+          <td>{{item['nombre']}}</td>
+          <td>
+            <a
+              href="javascript: fn_mostrar_frm_modificar({{item['id']}},{{item['nombre']}});"
+            >
+              <img
+                src="{{ url_for('static', filename='extras/ico/page_edit.png') }}"
+                style="width: 25px; height: 25px"
+            /></a>
+          </td>
+
+          <td>
+            <a
+              href="javascript: fn_SeguroAnalisis({{item['id']}},{{item['nombre']}});"
+            >
+              <img
+                src="{{ url_for('static', filename='extras/ico/book.png') }}"
+                width="25px"
+                height="25px"
+            /></a>
+          </td>
+          <td>
+            <a href="javascript: fn_eliminar({{item['id']}});">
+              <img
+                src="{{ url_for('static', filename='extras/ico/delete.png') }}"
+                style="width: 25px; height: 25px"
+            /></a>
+          </td>
+          {% endfor %}
+        </tbody>
+
+
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

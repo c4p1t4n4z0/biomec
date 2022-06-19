@@ -1,0 +1,872 @@
+{% extends '/base/menu.html' %} {% block navbar %}
+<script
+  language="javascript"
+  type="text/javascript"
+  src="{{ url_for('static', filename='js/JSSeguro.js') }}"
+></script>
+
+<style type="text/css">
+  .centrar {
+    position: absolute;
+    /*nos posicionamos en el centro del navegador*/
+    top: 30%;
+    left: 15%;
+  }
+</style>
+
+<nav class="navbar-default navbar-static-side" role="navigation">
+  <div class="sidebar-collapse">
+    <ul class="nav" id="side-menu" style="display: block">
+      <li class="nav-header">
+        <div class="dropdown profile-element">
+          <span>
+            <a href="../principal/">
+              <img
+                alt="image"
+                src="{{ url_for('static', filename='img/biomec.png') }}"
+                style="width: 100%; height: 100%"
+              />
+            </a>
+          </span>
+          <center>
+            <a class="dropdown-toggle"
+              ><span class="clear"> <strong>Suc. España</strong></span></a
+            >
+          </center>
+
+          <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <span class="clear">
+              <span class="block m-t-xs">
+                <strong class="font-bold"> {{Nombre}} </strong></span
+              >
+              <span class="text-muted text-xs block"
+                >{{tipo}}<b class="caret"></b
+              ></span>
+            </span>
+          </a>
+          <ul class="dropdown-menu animated fadeInRight m-t-xs">
+            <li><a href="{{ url_for('tipo.roles') }}">Cambiar de Cargo</a></li>
+          </ul>
+        </div>
+        <div class="logo-element">Bv</div>
+      </li>
+
+      <li>
+        <a href="#"
+          ><i class="fa fa-th-large"></i>
+          <span class="nav-label">Parametros</span>
+          <span class="fa arrow"></span
+        ></a>
+        <ul class="nav nav-second-level collapse">
+          <li><a href="../seguro/">Gestionar Seguro</a></li>
+          <li><a href="../personal/">Gestionar Personal</a></li>
+          <li>
+            <a href="{{ url_for('tipo.usuario') }}">Visualizar Usuarios</a>
+          </li>
+          <li><a href="../medico/">Gestionar Medico</a></li>
+          <li><a href="../especialidad">Gestionar Especialidad</a></li>
+          <li><a href="../privilegios/">Privilegios</a></li>
+          <li><a href="../gestionarPaciente/">Gestionar Paciente</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#"
+          ><i class="fa fa-flask"></i>
+          <span class="nav-label">Análisis Clinicos</span>
+          <span class="fa arrow"></span
+        ></a>
+        <ul class="nav nav-second-level collapse">
+          <li><a href="../precio/">Gestionar Precio de Análisis</a></li>
+          <li><a href="../analisis/">GESTIONAR ANALISIS</a></li>
+          <li><a href="../muestra">Gestionar Muestra</a></li>
+          <li><a href="../metodo">Gestionar Metodo</a></li>
+          <li><a href="../grupoAnalisis">Gestionar Grupo de Análisis</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#"
+          ><i class="fa fa-table"></i>
+          <span class="nav-label">Ingreso y Egreso</span>
+          <span class="fa arrow"></span
+        ></a>
+        <ul class="nav nav-second-level collapse">
+          <li><a href="../tipoIngreso/">Gestionar Tipos de Ingresos</a></li>
+          <li><a href="../tipoEgreso/">Gestionar Tipos de Egresos</a></li>
+          <li><a href="../ingresos/">Registro de Ingresos</a></li>
+          <li><a href="../egresos/">Registro de Egresos</a></li>
+          <li><a href="../flujoCaja/">Flujo de Caja</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#"
+          ><i class="fa fa-edit"></i>
+          <span class="nav-label">Información Clinica</span>
+          <span class="fa arrow"></span
+        ></a>
+        <ul class="nav nav-second-level collapse">
+          <li><a href="../cotizacion/">Cotizar Examen</a></li>
+          <li><a href="../recepcion/">Recepción Paciente</a></li>
+          <li><a href="../historicoAnalisis/">Historial de Analisis</a></li>
+          <li>
+            <a href="../informes/listaResultados.php">Lista de Resultados</a>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#"
+          ><i class="fa fa-google-wallet"></i>
+          <span class="nav-label">Transacciones</span>
+          <span class="fa arrow"></span
+        ></a>
+        <ul class="nav nav-second-level collapse">
+          <li>
+            <a href="../informes/listaTransacciones.php"
+              >Lista de Transacciones</a
+            >
+          </li>
+          <li><a href="../cobro/">Registro de Pago</a></li>
+          <li>
+            <a href="../informesDetalle/listaTransacciones.php"
+              >Transacciones con Detalle</a
+            >
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#"
+          ><i class="fa fa-paste"></i> <span class="nav-label">Seguros</span>
+          <span class="fa arrow"></span
+        ></a>
+        <ul class="nav nav-second-level collapse">
+          <li><a href="../morosos/">Seguros Morosos</a></li>
+          <li><a href="../cobroSeguro/">Registro de Cobro de Seguro</a></li>
+          <li><a href="../eliminarPagoSeguro/">Eliminar Pago al Seguro</a></li>
+          <li><a href="../alianza/">Alianza</a></li>
+          <li><a href="../detalle_seguro/">Detalle de Seguros</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#"
+          ><i class="fa fa-dollar"></i> <span class="nav-label">Varios</span>
+          <span class="fa arrow"></span
+        ></a>
+        <ul class="nav nav-second-level collapse">
+          <li><a href="../comisionMedico/">Comisiones Generales</a></li>
+          <li><a href="../comisionMedicoConvenio/">Comisiones Convenios</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#"
+          ><i class="fa fa-database"></i> <span class="nav-label">Backup</span>
+          <span class="fa arrow"></span
+        ></a>
+        <ul class="nav nav-second-level collapse">
+          <li><a href="../backup/">Backup</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+{% endblock %} {% block tabla %}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-sm-5">
+    <h2>{{ titulo }}</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="ibox float-e-margins">
+            <div class="ibox-title">
+              <h5>{{ titulo_usuario }}</h5>
+              <div class="ibox-tools">
+                <a class="collapse-link">
+                  <i class="fa fa-chevron-up"></i>
+                </a>
+              </div>
+            </div>
+            <div class="ibox-content">
+              <div class="row">
+                <form
+                  method="get"
+                  action="javascript: fn_buscar()"
+                  id="frm_buscar"
+                  name="frm_buscar"
+                >
+                  <div class="col-sm-3 m-b">
+                    <div class="form-group">
+                      <fieldset>
+                        <label for="user_name">Cargo</label><br />
+                        <select
+                          name="cargo"
+                          class="form-control"
+                          id="DropDownID"
+                        >
+                          <option value="0">Todos</option>
+                          <option value="1">Administrador</option>
+                          <option value="2">Bioquimico</option>
+                          <option value="3">Tecnico</option>
+                          <option value="4">Recepcionista</option>
+                          <option value="5">Contabilidad</option>
+                        </select>
+                      </fieldset>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 m-b">
+                    <div class="form-group">
+                      <fieldset>
+                        <label for="user_name">Nombre Completo</label><br />
+                        <span
+                          role="status"
+                          aria-live="polite"
+                          class="ui-helper-hidden-accessible"
+                        ></span
+                        ><input
+                          name="nomb"
+                          type="text"
+                          id="txtEmpleado"
+                          class="form-control ui-autocomplete-input"
+                          placeholder="Nombre Completo..."
+                          autocomplete="off"
+                        />
+                        <script>
+                          $("#txtEmpleado").autocomplete({
+                            source: function (request, response) {
+                              $.ajax({
+                                url: "autocompletado.php",
+                                dataType: "json",
+                                data: {
+                                  name_startsWith: request.term,
+                                  type: "nombreP",
+                                },
+                                success: function (data) {
+                                  response(
+                                    $.map(data, function (item) {
+                                      return {
+                                        label: item,
+                                        value: item,
+                                      };
+                                    })
+                                  );
+                                },
+                              });
+                            },
+                          });
+                        </script>
+                      </fieldset>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-3 m-b">
+                    <div class="input-group">
+                      <fieldset>
+                        <label
+                          for="user_name"
+                          style="text-align: center"
+                        ></label>
+                        <br />
+                        <input
+                          type="submit"
+                          name="btnBuscar"
+                          id="btnBuscar"
+                          value="Buscar"
+                          class="btn btn-sm btn-primary pull-right m-t-n-xs"
+                          style="display: block"
+                        />
+                        <img
+                          id="imgAjax"
+                          src="../images/ajax-load.gif"
+                          style="display: none"
+                          hidden=""
+                        />
+                      </fieldset>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+
+            <div class="ibox-title"></div>
+            <div id="lista_empleados">
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Nombre Completo</th>
+                      <th>Direccion</th>
+                      <th>Correo Electronico</th>
+                      <th>Telefono</th>
+                      <th></th>
+                      <th style="text-align: center" width="16px">
+                        Agregar (Cargo)
+                      </th>
+                      <th>
+                        <a href="javascript: fn_mostrar_frm_agregar();"
+                          ><img
+                            src="{{ url_for('static', filename='extras/ico/add.png') }}"
+                            style="width: 20px; height: 20px"
+                        /></a>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for item in items %}
+                    <tr></tr>          
+                    <td>{{item['ci']}}</td>
+                    <td>{{item['nombre']}}</td>
+                    <td>{{item['apellidoP']}}</td>
+                    <td>{{item['email']}}</td>
+                    <td>{{item['telefono']}}</td>
+
+                      <td>
+                        <a
+                          href="javascript: fn_mostrar_frm_modificar({{item['id']}},{{item['nombre']}},{{item['apellidoP']}},'{{item['apellidoM']}}',{{item['telefono']}},'0');"
+                        >
+                          <img
+                            src="{{ url_for('static', filename='extras/ico/page_edit.png') }}"
+                            style="width: 20px; height: 20px"
+                        /></a>
+                      </td>
+                      <td>
+                        <a href="javascript: fn_mostrar_frm_asignar({{item['id']}});">
+                          <img
+                            src="{{ url_for('static', filename='extras/ico/book.png') }}"
+                            style="width: 20px; height: 20px"
+                        /></a>
+                      </td>
+                      <td>
+                        <a href="javascript: fn_eliminar({{item['id']}});">
+                          <img
+                            src="{{ url_for('static', filename='extras/ico/delete.png') }}"
+                            style="width: 20px; height: 20px"
+                        /></a>
+                      </td>
+
+                    {% endfor %}
+                  </tbody>
+                
+                </table>
+              </div>
+            </div>
+            <div
+              id="div_agregar"
+              style="
+                display: none;
+                text-align: center;
+                height: 90%;
+                overflow-y: scroll;
+                overflow-x: hidden;
+              "
+              class="wrapper wrapper-content animated fadeInRight"
+            >
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="ibox float-e-margins">
+                    <div style="text-align: center" class="ibox-title">
+                      <h5>Agregar Nuevo Empleado</h5>
+                    </div>
+                    <form
+                      action="registrarEmpleado.php"
+                      method="post"
+                      id="frm_agregar_e"
+                      enctype="multipart/form-data"
+                    >
+                      <div class="ibox-title">
+                        <div class="form-group">
+                          <div class="row">
+                            <fieldset>
+                              <label for="user_name">Cargo</label><br />
+                              <select
+                                name="cargo"
+                                class="form-control"
+                                id="cargo"
+                                onchange="funcion();"
+                              >
+                                <option value="1">Administrador</option>
+                                <option value="2">Bioquimico</option>
+                                <option value="3">Tecnico</option>
+                                <option value="4">Recepcionista</option>
+                                <option value="5">Contabilidad</option>
+                              </select>
+                              <script>
+                                function funcion() {
+                                  var dato = $("#cargo").val();
+                                  if (dato == "3" || dato == "4") {
+                                    $("#firmaContainer").hide;
+                                  } else {
+                                    $("#firmaContainer").show();
+                                  }
+                                }
+                              </script>
+                            </fieldset>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <fieldset>
+                              <label for="user_name">Sucursal</label>
+                              <br />
+                              <select
+                                name="DropDownList4"
+                                id="DropDownList4"
+                                class="form-control"
+                              >
+                                <option value="1">España</option>
+                                <option value="2">Cosalud</option>
+                                <option value="3">Sion Urbari</option>
+                                <option value="4">Niño Jesús</option>
+                                <option value="6">ONCOLOGICO</option>
+                                <option value="5">Canal Isuto</option>
+                              </select>
+                            </fieldset>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <label
+                              for="user_name"
+                              class="col-lg-2 control-label"
+                              >Nombre</label
+                            >
+                            <div class="col-lg-10">
+                              <input
+                                name="nomb"
+                                type="text"
+                                id="nomb"
+                                class="form-control"
+                                placeholder="Nombre"
+                                size="16"
+                                required=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <label class="col-lg-2 control-label"
+                              >Apellido Paterno</label
+                            >
+                            <div class="col-lg-10">
+                              <input
+                                name="txtP_Ap"
+                                type="text"
+                                id="txtP_Ap"
+                                onkeypress="return validar_espacio(event)"
+                                class="form-control"
+                                size="16"
+                                placeholder="Apellido Paterno"
+                                required=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <label class="col-lg-2 control-label"
+                              >Apellido Materno</label
+                            >
+                            <div class="col-lg-10">
+                              <input
+                                name="txtP_Am"
+                                type="text"
+                                id="txtP_Am"
+                                class="form-control"
+                                placeholder="Apellido Materno"
+                                size="16"
+                                required=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <label class="col-lg-2 control-label"
+                              >Celular</label
+                            >
+                            <div class="col-lg-10">
+                              <input
+                                name="txtCelular"
+                                type="text"
+                                id="txtCelular"
+                                onkeypress="return validar_numero(event)"
+                                class="form-control"
+                                size="16"
+                                placeholder="# Celular"
+                                required=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <label class="col-lg-2 control-label"
+                              >Dirección</label
+                            >
+                            <div class="col-lg-10">
+                              <input
+                                name="txtDir"
+                                type="text"
+                                id="txtDir"
+                                class="form-control"
+                                size="16"
+                                placeholder="Dirección"
+                                required=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <fieldset name="firmaContainer">
+                            <div class="row">
+                              <label class="col-lg-2 control-label"
+                                >Firma Digital</label
+                              >
+                              <div class="col-lg-10">
+                                <input
+                                  id="firma"
+                                  name="firma"
+                                  type="file"
+                                  style="width: 410px"
+                                />
+                              </div>
+                            </div>
+                          </fieldset>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <input
+                                name="agregar"
+                                id="btnAgregar"
+                                type="submit"
+                                class="btn btn-sm btn-primary pull-right m-t-n-xs"
+                                value="Agregar"
+                              />
+                            </div>
+
+                            <div class="col-lg-6">
+                              <input
+                                name="cancelar"
+                                id="btnCancelarA"
+                                type="button"
+                                class="btn btn-sm btn-primary pull-left m-t-n-xs"
+                                value="Cancelar"
+                                onclick="fn_cerrar();"
+                              />
+                            </div>
+                            <img
+                              id="imgAjaxAgregar"
+                              src="../images/ajax-load.gif"
+                              hidden=""
+                              align="middle"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              id="div_modificar"
+              style="
+                display: none;
+                text-align: center;
+                height: 90%;
+                overflow-y: scroll;
+                overflow-x: hidden;
+              "
+              class="wrapper wrapper-content animated fadeInRight"
+            >
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="ibox float-e-margins">
+                    <div style="text-align: center" class="ibox-title">
+                      <h5>Modificar Datos Empleado</h5>
+                    </div>
+                    <form
+                      action="modifEmpleado.php"
+                      method="post"
+                      id="frm_agregar_e"
+                      enctype="multipart/form-data"
+                    >
+                      <div class="ibox-title">
+                        <div class="form-group">
+                          <div class="row">
+                            <label
+                              for="user_name"
+                              class="col-lg-2 control-label"
+                              >Nombre</label
+                            >
+                            <div class="col-lg-10">
+                              <input
+                                type="text"
+                                name="id_modif"
+                                id="id_modif"
+                                hidden=""
+                              />
+                              <input
+                                name="nomb_modif"
+                                type="text"
+                                id="nomb_modif"
+                                class="form-control"
+                                placeholder="Nombre"
+                                size="16"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <label class="col-lg-2 control-label"
+                              >Apellido Paterno</label
+                            >
+                            <div class="col-lg-10">
+                              <input
+                                name="txtP_Ap_modif"
+                                type="text"
+                                id="txtP_Ap_modif"
+                                onkeypress="return validar_espacio(event)"
+                                class="form-control"
+                                size="16"
+                                placeholder="Apellido Paterno"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <label class="col-lg-2 control-label"
+                              >Apellido Materno</label
+                            >
+                            <div class="col-lg-10">
+                              <input
+                                name="txtP_Am_modif"
+                                type="text"
+                                id="txtP_Am_modif"
+                                class="form-control"
+                                placeholder="Apellido Materno"
+                                size="16"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <label class="col-lg-2 control-label"
+                              >Celular</label
+                            >
+                            <div class="col-lg-10">
+                              <input
+                                name="txtCelular_modif"
+                                type="text"
+                                id="txtCelular_modif"
+                                onkeypress="return validar_numero(event)"
+                                class="form-control"
+                                size="16"
+                                placeholder="# Celular"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <label class="col-lg-2 control-label"
+                              >Dirección</label
+                            >
+                            <div class="col-lg-10">
+                              <input
+                                name="txtDir_modif"
+                                type="text"
+                                id="txtDir_modif"
+                                class="form-control"
+                                size="16"
+                                placeholder="Dirección"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <fieldset id="firmaContainer">
+                            <div class="row">
+                              <label class="col-lg-2 control-label"
+                                >Firma Digital</label
+                              >
+                              <div class="col-lg-10">
+                                <input
+                                  id="firma"
+                                  name="firma"
+                                  type="file"
+                                  style="width: 410px"
+                                />
+                              </div>
+                            </div>
+                          </fieldset>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <input
+                                name="agregar"
+                                id="btnAgregar"
+                                type="submit"
+                                class="btn btn-sm btn-primary pull-right m-t-n-xs"
+                                value="Modificar"
+                              />
+                            </div>
+
+                            <div class="col-lg-6">
+                              <input
+                                name="cancelar"
+                                id="btnCancelarA"
+                                type="button"
+                                class="btn btn-sm btn-primary pull-left m-t-n-xs"
+                                value="Cancelar"
+                                onclick="fn_cerrar();"
+                              />
+                            </div>
+                            <img
+                              id="imgAjaxAgregar"
+                              src="../images/ajax-load.gif"
+                              hidden=""
+                              align="middle"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="div_agregarCargo"
+              style="
+                display: none;
+                text-align: center;
+                height: 90%;
+                overflow-y: scroll;
+                overflow-x: hidden;
+              "
+              class="wrapper wrapper-content animated fadeInRight"
+            >
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="ibox float-e-margins">
+                    <div style="text-align: center" class="ibox-title">
+                      <h5>Asignar Cargo a un Empleado</h5>
+                    </div>
+                    <form
+                      action="adicionarCargo.php"
+                      method="post"
+                      id="frm_agregar_e"
+                    >
+                      <input
+                        name="idEmpleado"
+                        type="text"
+                        id="idEmpleado"
+                        hidden=""
+                      />
+                      <div class="ibox-title">
+                        <div class="form-group">
+                          <div class="row">
+                            <fieldset>
+                              <label for="user_name">Cargo</label><br />
+                              <select
+                                name="cargo"
+                                class="form-control"
+                                id="cargo"
+                                onchange="funcion()"
+                              >
+                                <option value="1">Administrador</option>
+                                <option value="2">Bioquimico</option>
+                                <option value="3">Tecnico</option>
+                                <option value="4">Recepcionista</option>
+                                <option value="5">Contabilidad</option>
+                              </select>
+                            </fieldset>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <fieldset>
+                              <label for="user_name">Sucursal</label>
+                              <br />
+                              <select
+                                name="DropDownList4"
+                                id="DropDownList4"
+                                class="form-control"
+                              >
+                                <option value="1">España</option>
+                                <option value="2">Cosalud</option>
+                                <option value="3">Sion Urbari</option>
+                                <option value="4">Niño Jesús</option>
+                                <option value="6">ONCOLOGICO</option>
+                                <option value="5">Canal Isuto</option>
+                              </select>
+                            </fieldset>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <input
+                                name="agregar"
+                                id="btnAgregar"
+                                type="submit"
+                                class="btn btn-sm btn-primary pull-right m-t-n-xs"
+                                value="Agregar"
+                              />
+                            </div>
+
+                            <div class="col-lg-6">
+                              <input
+                                name="cancelar"
+                                id="btnCancelarA"
+                                type="button"
+                                class="btn btn-sm btn-primary pull-left m-t-n-xs"
+                                value="Cancelar"
+                                onclick="fn_cerrar();"
+                              />
+                            </div>
+                            <img
+                              id="imgAjaxAgregar"
+                              src="../images/ajax-load.gif"
+                              hidden=""
+                              align="middle"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br /><br /><br />
+
+ 
+  </div>
+</div>
+{% endblock %} 
