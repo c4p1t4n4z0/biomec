@@ -3,12 +3,14 @@ from flask import Blueprint, flash, redirect, render_template, request, session,
 
 # importamos los controladores de Usuario
 from ..controller import UserController
+
 from ..controller import PersonaController
 from ..controller import LaboratoristaController
 # importamos los Modelos 
 from ..models.entidades.User import User 
 from ..models.entidades.Persona import Persona 
 from ..models.entidades.Laboratorista import Laboratorista
+from ..models.entidades.Seguro import Seguro
 
 from ..routers.tipo import session # estoy importando la variable global donde se guarda la session del usuario que ingreso al sistema
 seguro_scope = Blueprint('seguro',__name__)
@@ -28,7 +30,7 @@ def seguro():
                         "titulo_usuario":"Seguros Asociados al Laboratorio"
                 }
  
-        usuarios_lista = UserController.list()    #! implementar el modelo seguro
-        return render_template("usuario/admin/seguro.html", **parametros, items = usuarios_lista)
+        cargo_lista = UserController.list()    #! implementar el modelo seguro
+        return render_template("usuario/admin/seguro.html", **parametros, items = cargo_lista)
 
     return redirect(url_for('tipo.login'))

@@ -7,9 +7,7 @@
     {{title}}
     <p>{{description}}</p>
 </div>
-<a class="btn btn-secondary" href="{{ url_for('tipo.admin') }}">Administrador</a>
-<a class="btn btn-secondary" href="{{ url_for('tipo.personal') }}">Recepcionista</a>
-<a class="btn btn-secondary" href="{{ url_for('tipo.tecnico') }}">Tecnino</a>
+
 
 <a class="btn btn-secondary" href="{{ url_for('tipo.logout') }}">Cerar sesion</a>
 
@@ -49,47 +47,24 @@
                         <h4> 
                             <strong class="font-bold">Usuario :  </strong> {{ Nombre}} 
                         </h4>            
-                        <p>
+                        <!-- <p>
                             Inicia sesión. Para verlo en acción.
-                        </p>
-            
-                <div class="form-group"> 
-                    <input id="btnAdmin" name="btnAdmin" type="submit" class="btn btn-primary block full-width m-b" value="Administrador" >
-                        <select name="TAdmin" id="TAdmin" hidden="" >
-                            <option value="1" >Administrador</option>
-                        </select>                                             
-                    <br>   
-                </div>
+                        </p> -->
 
-                <div class="form-group">   
-                    <input id="btnBio" name="btnBio" type="submit" class="btn btn-primary block full-width m-b" value="Bioquimico">
-                        <select name="TBio" id="TBio" hidden=""> 
-                            <option value="2">Bioquimico</option>
-                        </select>                   
-                    <br> 
-                </div>
 
-                <div class="form-group">
-                    <input id="btnTecnico" name="btnTecnico" type="submit" class="btn btn-primary block full-width m-b" value="Tecnico">
-                        <select name="TTecnico" id="TTecnico" hidden=""> 
-                            <option value="3">Tecnico</option>
-                        </select>
-                    <br>     
-                </div>
-
-                <div class="form-group">
-                    <input id="btnSecre" name="btnRecepcionista" type="submit" class="btn btn-primary block full-width m-b" value="Recepcionista">
-                        <select name="TRecep" id="TRecep" hidden=""> 
-                            <option value="4">Recepcionista</option>
-                        </select>
-                    <br>   
-                </div>     
-                <div class="form-group">
-                    <select name="TMed" id="TMed" hidden=""> 
-                        <option value="5">Contabilidad</option>
-                    </select>
+                <div class="btn-group-vertical ">
+                    <a href="{{ url_for('tipo.admin') }}" class="btn btn-primary">Administrador</a>
                     <br>
-                </div> 
+                    <a href="{{ url_for('tipo.recepcionista') }}" class="btn btn-primary">Recepcionista</a>
+                    <br>
+                    <a href="{{ url_for('tipo.bioquimico') }}" class="btn btn-primary">Bioquimico</a>
+                    <br>
+                    <a href="{{ url_for('tipo.tecnico') }}" class="btn btn-primary">Tecnico</a>
+                    <br>
+                    <a href="{{ url_for('tipo.paciente') }}" class="btn btn-primary">Paciente</a>
+                    <br>
+
+                </div>
             
             </span></span>
             </div>

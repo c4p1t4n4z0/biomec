@@ -1,5 +1,6 @@
+from biomec.routers.seguro import Seguro
 from ..models.entidades.Seguro import Seguro
-from ..database.db_entidades import seguro_db
+from ..database import seguro_db
 
 def create(seguro: Seguro)->Seguro:
     # comment: 
@@ -15,3 +16,7 @@ def delete(seguro: Seguro)->Seguro:
     # comment: 
     return seguro_db.delete(seguro)
 # end def
+
+#Devuelve lista completa 
+def list():
+    return seguro_db.list_all()
