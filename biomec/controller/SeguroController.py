@@ -1,6 +1,8 @@
-from biomec.routers.seguro import Seguro
 from ..models.entidades.Seguro import Seguro
 from ..database import seguro_db
+
+
+
 
 def create(seguro: Seguro)->Seguro:
     # comment: 
